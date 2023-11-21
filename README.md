@@ -39,6 +39,8 @@ Check the roadmap for more information
 Add badges from somewhere like: [shields.io](https://shields.io/)
 
 ![GitHub all releases](https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total)
+![GitHub Repo stars](https://img.shields.io/github/stars/archways404/ModernPrimulaApp)
+
 
 
 [![TEMP](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
