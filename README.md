@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/archways404/ModernPrimulaApp/blob/main/images/image_transparent.png)
+![Logo](https://github.com/archways404/ModernPrimulaApp/blob/main/images/image_transparent_all-removebg-preview.png)
 
 # ModernPrimulaAPP
 
