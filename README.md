@@ -38,7 +38,7 @@ Check the roadmap for more information
 
 Add badges from somewhere like: [shields.io](https://shields.io/)
 
-[Downloads](https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total
+! [Downloads](https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total
 )
 
 [![TEMP](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
