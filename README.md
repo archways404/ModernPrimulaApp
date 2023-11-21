@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/archways404/ModernPrimulaApp/blob/main/image_transparent_all-removebg-preview.png)
+![Logo](https://github.com/archways404/ModernPrimulaApp/blob/main/images/image_transparent.png)
 
 # ModernPrimulaAPP
 
@@ -84,7 +84,11 @@ Answer 2
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/Homepage.png)
+
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/MainMenu.png)
+
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/Dates.png)
 
 
 ## About
