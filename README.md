@@ -3,7 +3,7 @@
 
 # ModernPrimulaAPP
 
-ModernPrimulaAPP is an application that automates time reporting in Primula.
+ModernPrimula is an application that simplifies and automates time reporting in Primula.
 
 
 ## Features
@@ -13,7 +13,7 @@ ModernPrimulaAPP is an application that automates time reporting in Primula.
 - Improved UI
 - Currently available on MacOS and Windows
   
- check the roadmap for more information
+ Visit the roadmap for more information
 
 
 ## License
