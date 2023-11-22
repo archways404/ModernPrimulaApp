@@ -4,19 +4,9 @@
 # ModernPrimulaAPP
 
 ModernPrimula is an application that simplifies and automates time reporting in Primula.
-
-## Badges
-
-Add badges from somewhere like: [shields.io](https://shields.io/)
-
+ 
 ![GitHub all releases](https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total)
 ![GitHub Repo stars](https://img.shields.io/github/stars/archways404/ModernPrimulaApp)
-
-
-
-[![TEMP](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![TEMP](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
-
 
 ## Features
 
@@ -98,5 +88,17 @@ Answer 2
 ## About
 
 Any additional information goes here
+
+
+## Badges
+
+Add badges from somewhere like: [shields.io](https://shields.io/)
+
+
+
+[![TEMP](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![TEMP](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
+
 
 
