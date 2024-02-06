@@ -189,7 +189,10 @@ electron.ipcMain.on("EMP_data", async (event, clientData) => {
   try {
     const logicData = await primulaFunction.getTableData(newPage);
     const advancedtableData = logicData.advancedtableData;
-    const validFormDataTEST = await primulaFunction.VerifyData(data, advancedtableData);
+    const validFormDataTEST = await primulaFunction.VerifyData(
+      data,
+      advancedtableData
+    );
     console.log("validFormDataTEST: ", validFormDataTEST);
     if (validFormDataTEST) {
       console.log("success");

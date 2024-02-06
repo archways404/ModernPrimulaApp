@@ -14,6 +14,7 @@ let launchOptions;
 async function login(username, password) {
 	try {
 		const resLoginAttempt = await loginRequest(username, password);
+		console.log('resLoginAttempt: ', resLoginAttempt);
 		if (resLoginAttempt === true) {
 			return 200;
 		} else {
@@ -30,11 +31,13 @@ async function loginRequest(username, password) {
 		const curlCommand = `curl -X POST -d "ajax=1&username=${username}&realm=&credential=${password}" https://primula.mau.se:10443/remote/logincheck 2>NUL`;
 		const { stdout, stderr } = await exec(curlCommand);
 		if (stdout.includes('ret=1')) {
+			console.log('ret1 true');
 			return true;
 		} else if (stdout.includes('ret=0')) {
+			console.log('ret1 false');
 			return false;
 		} else {
-			return stderr;
+			return false;
 		}
 	} catch (error) {
 		console.error(`Error: ${error}`);
