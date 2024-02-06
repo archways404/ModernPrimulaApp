@@ -7,6 +7,37 @@ ModernPrimula is an application that simplifies and automates time reporting in 
  
 ![GitHub all releases](https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total) ![GitHub Repo stars](https://img.shields.io/github/stars/archways404/ModernPrimulaApp)
 
+## BETA TESTING
+
+I will try and publish a compiled version, but if you wish to try anyways:
+
+ - make sure that you have nodeJS installed
+ - Download the files or clone the repository
+
+Clone or download the repository
+
+Open the repository in any terminal / commandline, ex:
+
+```bash
+cd downloads/ModernPrimulaApp
+```
+
+Once you are in the folder run the following command to install the dependencies:
+
+```bash
+npm install
+```
+
+After you are done with the installation, you can run the program by running:
+
+```bash
+npm run dev
+```
+
+The application should now be running!
+
+***NOTE that the program won't actually submit the salary. I will update the repo with instructions on how to turn on submission!***
+
 ## Features
 
 - Automatic time reporting
