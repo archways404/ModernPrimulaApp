@@ -38,6 +38,8 @@ The application should now be running!
 
 ***NOTE that the program won't actually submit the salary. I will update the repo with instructions on how to turn on submission!***
 
+[INSTALL VIDEO](https://drive.google.com/file/d/1O3tFHcgZIbvAfvvdKWqfjVGjj_zfxrmB/view?usp=sharing)
+
 ## Features
 
 - Automatic time reporting
