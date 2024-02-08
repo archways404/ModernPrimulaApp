@@ -11,7 +11,7 @@ ModernPrimula is an application that simplifies and automates time reporting in 
 
 ## Beta Instructions & Documentation
 
-Link to the Documentation & Instructions can be found [here](https://github.com/archways404/modernprimulaapp/extras/documentation.md)
+Link to the Documentation & Instructions can be found [here](https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md)
 
 ## Features
 
