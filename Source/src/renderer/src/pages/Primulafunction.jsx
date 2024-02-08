@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const { ipcRenderer } = window.require('electron');
 
 import EditDatesForm from '../components/EditDatesForm';
 
 const Primulafunction = () => {
+	const navigate = useNavigate();
 	useEffect(() => {
-    const name = localStorage.getItem('name')
+		const name = localStorage.getItem('name');
 		const month = localStorage.getItem('month');
 		const salary = localStorage.getItem('salary');
 
@@ -34,6 +37,11 @@ const Primulafunction = () => {
 				<span className="text-purple-500">a</span>
 			</h1>
 			<EditDatesForm />
+			<button
+				onClick={() => navigate('/home')}
+				className="bg-green-500 text-black w-32 h-8 rounded-t-3xl">
+				Home
+			</button>
 		</div>
 	);
 };
