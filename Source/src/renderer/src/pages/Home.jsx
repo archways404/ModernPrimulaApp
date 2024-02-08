@@ -1,8 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/XbhQYHeMz7f
- */
-
 import { useNavigate } from 'react-router-dom';
 import UpdateCheck from '../components/UpdateCheck';
 

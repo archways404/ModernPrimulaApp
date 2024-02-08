@@ -1,8 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/ZODF0yh0DlK
- */
-
 import { useNavigate } from 'react-router';
 
 const DateForm = () => {

@@ -1,7 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/ZODF0yh0DlK
- */
 const { ipcRenderer } = require('electron');
 import { useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
@@ -101,4 +97,4 @@ const Editlogin = () => {
 	);
 };
 
-export default Editlogin
+export default Editlogin;

@@ -1,8 +1,4 @@
 /* eslint-disable no-unused-vars */
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/2EfWpNxPfdM
- */
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
