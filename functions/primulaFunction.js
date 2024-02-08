@@ -122,7 +122,7 @@ async function loginToPrimula(newPage, username, password) {
 async function checkMFA(newPage) {
 	try {
 		const valid = await newPage.waitForSelector('#validEntropyNumber', {
-			timeout: 10000,
+			timeout: 12000,
 		});
 		if (valid) {
 			return true;
@@ -441,6 +441,16 @@ async function removeArende(newPage) {
 	await newPage.waitForTimeout(500);
 }
 
+async function submitArende(newPage) {
+	await newPage.on('dialog', async (dialog) => {
+		console.log('Dialog message:', dialog.message());
+		await dialog.accept();
+	});
+	const submitA = await newPage.locator('input[type="submit"][value="Skicka"]');
+	await submitA.click();
+	await newPage.waitForTimeout(500);
+}
+
 async function closeBrowser(newPage) {
 	await newPage.close();
 	//await browser.close()
@@ -486,5 +496,6 @@ module.exports = {
 	getTableData,
 	VerifyData,
 	removeArende,
+	submitArende,
 	mainCore,
 };

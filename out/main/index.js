@@ -79,6 +79,7 @@ electron.ipcMain.on("start-verifyLoginDetails-task", async (event, arg) => {
   const password = arg.password;
   try {
     const login = await primulaFunction.login(username, password);
+    console.log(login);
     if (login === 200) {
       console.log("Login successful");
       event.sender.send("verifyLoginDetails-task-complete", {
@@ -89,7 +90,7 @@ electron.ipcMain.on("start-verifyLoginDetails-task", async (event, arg) => {
     } else {
       console.log("Login failed");
       event.sender.send("verifyLoginDetails-task-complete", {
-        status: "success",
+        status: "failed",
         username,
         password
       });
