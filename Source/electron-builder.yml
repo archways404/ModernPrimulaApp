@@ -1,5 +1,5 @@
-appId: com.mpa.app
-productName: mpa
+appId: com.modernprimula.app
+productName: modernprimula
 directories:
   buildResources: build
 files:
@@ -11,7 +11,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: mpa
+  executableName: modernprimula
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
