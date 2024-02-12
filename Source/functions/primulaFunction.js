@@ -310,10 +310,9 @@ async function insertHours(newPage, data) {
 }
 
 async function pressCalculate(newPage) {
-	const calcButtonSelector = 'input[type="submit"][value="Beräkna"]';
-	await newPage.waitForSelector(calcButtonSelector); // Wait for the button to appear
-	const calcButton = await newPage.$(calcButtonSelector); // Use page.$ to select a single button
-	await calcButton.click();
+	await newPage.evaluate(() => {
+		document.querySelector('input[type="submit"][value="Beräkna"]').click();
+	});
 	await newPage.waitForNavigation();
 	console.log('Calculating...');
 }

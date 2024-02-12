@@ -118,7 +118,7 @@ ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 	const username = arg.username;
 	const password = arg.password;
 	try {
-    const login = await primulaFunction.login(username, password);
+		const login = await primulaFunction.login(username, password);
 		console.log(login);
 		if (login === 200) {
 			console.log('Login successful');
