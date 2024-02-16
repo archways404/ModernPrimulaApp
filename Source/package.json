@@ -1,15 +1,11 @@
 {
 	"name": "modernprimula",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "404 Not Found LLC",
 	"main": "./out/main/index.js",
 	"author": "archways404",
 	"homepage": "https://archways404.dev",
 	"repository": "https://github.com/archways404/ModernPrimulaApp",
-	"publish": {
-		"provider": "github",
-		"releaseType": "release"
-	},
 	"scripts": {
 		"format": "prettier --write .",
 		"lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
