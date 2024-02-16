@@ -94,26 +94,32 @@ app.on('window-all-closed', () => {
 	}
 });
 
-// UPDATE HANDLING
-autoUpdater.autoDownload = false;
-autoUpdater.autoInstallOnAppQuit = true;
+// Disable auto-download
+autoUpdater.autoDownload = true;
 
-autoUpdater.on('update-available', () => {
-	// Notify user a new update is available
-	mainWindow.webContents.send('update_available');
-	console.log('update available');
+// Check for updates
+ipcMain.on('check_for_updates', () => {
+	autoUpdater.checkForUpdates();
 });
 
-autoUpdater.on('update-downloaded', () => {
-	// Notify user the update is ready for installation
-	// Optionally prompt for installation and restart
+// Download update
+ipcMain.on('download_update', () => {
 	autoUpdater.downloadUpdate();
-	mainWindow.webContents.send('update_downloaded');
-	console.log('update downloaded');
 });
 
+// Restart and install update
 ipcMain.on('restart_app', () => {
 	autoUpdater.quitAndInstall();
+});
+
+// Notify renderer when an update is available
+autoUpdater.on('update-available', () => {
+	mainWindow.webContents.send('update_available');
+});
+
+// Notify renderer when an update has been downloaded
+autoUpdater.on('update-downloaded', () => {
+	mainWindow.webContents.send('update_downloaded');
 });
 
 // Listen for IPC messages and handle them as needed

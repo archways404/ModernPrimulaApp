@@ -1,3 +1,3 @@
 provider: generic
-url: https://example.com/auto-updates
+url: https://github.com/archways404/modernprimula/releases
 updaterCacheDirName: application-updater

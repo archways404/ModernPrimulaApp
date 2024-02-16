@@ -39,8 +39,6 @@ appImage:
 npmRebuild: true
 publish:
   provider: github
-  repo: ModernPrimulaApp
-  owner: archways404
   releaseType: release
 
 

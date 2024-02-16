@@ -4,26 +4,40 @@ const { ipcRenderer } = window.require('electron');
 
 const Home = () => {
 	const [updateAvailable, setUpdateAvailable] = useState(false);
+	const [updateDownloaded, setUpdateDownloaded] = useState(false);
 
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		ipcRenderer.on('update_available', () => {
+			console.log('update_available');
 			setUpdateAvailable(true);
 		});
 
 		ipcRenderer.on('update_downloaded', () => {
-			ipcRenderer.send('restart_app');
+			console.log('update_downloaded');
+			setUpdateDownloaded(true);
 		});
 
-		// Cleanup listeners when component unmounts or updates
 		return () => {
 			ipcRenderer.removeAllListeners('update_available');
+			ipcRenderer.removeAllListeners('update_downloaded');
 		};
 	}, []);
 
+	const checkForUpdates = () => {
+		ipcRenderer.send('check_for_updates');
+		console.log('update_check');
+	};
+
+	const downloadUpdate = () => {
+		ipcRenderer.send('download_update');
+		console.log('download_update');
+	};
+
 	const restartApp = () => {
 		ipcRenderer.send('restart_app');
+		console.log('restart_app');
 	};
 
 	return (
@@ -44,13 +58,17 @@ const Home = () => {
 				<span className="text-purple-500">a</span>
 			</h1>
 			<div className="flex flex-col items-center space-y-4">
-				{updateAvailable && (
-					<button
-						className="mt-8 bg-green-500 hover:bg-green-700 text-black font-bold py-2 px-4 rounded"
-						onClick={restartApp}>
-						Update & Restart
-					</button>
-				)}
+				<div>
+					{updateAvailable && !updateDownloaded && (
+						<button onClick={downloadUpdate}>Download Update</button>
+					)}
+					{updateDownloaded && (
+						<button onClick={restartApp}>Restart to Install Update</button>
+					)}
+					{!updateAvailable && !updateDownloaded && (
+						<button onClick={checkForUpdates}>Check for Updates</button>
+					)}
+				</div>{' '}
 				<button
 					onClick={() => navigate('/automatic')}
 					className={`bg-red-500 text-black w-32 h-8 rounded-xl ${
