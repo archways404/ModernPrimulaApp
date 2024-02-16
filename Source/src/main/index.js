@@ -76,7 +76,6 @@ app.whenReady().then(() => {
 	});
 
 	createWindow();
-	autoUpdater.checkForUpdatesAndNotify();
 
 	app.on('activate', function () {
 		// On macOS it's common to re-create a window in the app when the
@@ -113,8 +112,21 @@ ipcMain.on('restart_app', () => {
 });
 
 // Notify renderer when an update is available
-autoUpdater.on('update-available', () => {
+autoUpdater.on('update-available', (info) => {
+	console.log(info);
 	mainWindow.webContents.send('update_available');
+});
+
+// Notify renderer when an update is available
+autoUpdater.on('update-not-available', (info) => {
+	console.log(info);
+	mainWindow.webContents.send('update-not-available');
+});
+
+// Notify renderer when an update is available
+autoUpdater.on('update-error', (err) => {
+	console.log(err);
+	mainWindow.webContents.send('update-error', err);
 });
 
 // Notify renderer when an update has been downloaded

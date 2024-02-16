@@ -14,6 +14,14 @@ const Home = () => {
 			setUpdateAvailable(true);
 		});
 
+		ipcRenderer.on('update-not-available', () => {
+			console.log('update-not-available');
+		});
+
+		ipcRenderer.on('update-error', (err) => {
+			console.log('update-error', err);
+		});
+
 		ipcRenderer.on('update_downloaded', () => {
 			console.log('update_downloaded');
 			setUpdateDownloaded(true);

@@ -41,7 +41,7 @@ publish:
   provider: github
   owner: archways404
   repo: ModernPrimulaApp
-  releaseType: draft
+  releaseType: release
 
 
 
