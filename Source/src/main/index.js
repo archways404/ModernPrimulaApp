@@ -2,7 +2,7 @@
 import { app, shell, BrowserWindow, ipcMain, nativeImage } from 'electron';
 import { join } from 'path';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
-const { autoUpdater } = require('electron-updater');
+const { autoUpdater, AppUpdater } = require('electron-updater');
 
 const path = require('path');
 const url = require('url');
@@ -91,10 +91,10 @@ app.on('window-all-closed', () => {
 	}
 });
 
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.
-
 // UPDATE HANDLING
+autoUpdater.autoDownload = false;
+autoUpdater.autoInstallOnAppQuit = true;
+
 autoUpdater.on('update-available', () => {
 	// Notify user a new update is available
 	mainWindow.webContents.send('update_available');
@@ -104,6 +104,7 @@ autoUpdater.on('update-available', () => {
 autoUpdater.on('update-downloaded', () => {
 	// Notify user the update is ready for installation
 	// Optionally prompt for installation and restart
+	autoUpdater.downloadUpdate();
 	mainWindow.webContents.send('update_downloaded');
 	console.log('update downloaded');
 });

@@ -5,6 +5,11 @@
 	"main": "./out/main/index.js",
 	"author": "archways404",
 	"homepage": "https://archways404.dev",
+	"repository": "https://github.com/archways404/ModernPrimulaApp",
+	"publish": {
+		"provider": "github",
+		"releaseType": "release"
+	},
 	"scripts": {
 		"format": "prettier --write .",
 		"lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",

@@ -13,13 +13,12 @@ const Home = () => {
 		});
 
 		ipcRenderer.on('update_downloaded', () => {
-			// Code to prompt the user to install the update can go here
+			ipcRenderer.send('restart_app');
 		});
 
 		// Cleanup listeners when component unmounts or updates
 		return () => {
 			ipcRenderer.removeAllListeners('update_available');
-			ipcRenderer.removeAllListeners('update_downloaded');
 		};
 	}, []);
 
