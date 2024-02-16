@@ -4,8 +4,10 @@
 # ModernPrimula
 
 ModernPrimula is an application that simplifies and automates time reporting in Primula.
+
+[![Latest Release](https://img.shields.io/github/v/release/archways404/ModernPrimulaApp?style=flat-square)](https://github.com/archways404/ModernPrimulaApp/releases/latest)
  
-![GitHub all releases](https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total) 
+![GitHub all releases](https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total?style=flat-square) 
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/archways404/ModernPrimulaApp)
 
