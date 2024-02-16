@@ -44,7 +44,9 @@ function createWindow() {
 		return { action: 'deny' };
 	});
 
-	mainWindow.webContents.openDevTools();
+	// DISABLED FOR TESTING
+	//mainWindow.webContents.openDevTools();
+
 	mainWindow.webContents.on('did-finish-load', () => {
 		mainWindow.webContents.send('set-dirname', __dirname);
 	});
@@ -68,6 +70,7 @@ app.whenReady().then(() => {
 	// Default open or close DevTools by F12 in development
 	// and ignore CommandOrControl + R in production.
 	// see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
+
 	app.on('browser-window-created', (_, window) => {
 		optimizer.watchWindowShortcuts(window);
 	});
@@ -245,10 +248,8 @@ ipcMain.on('EMP_data', async (event, clientData) => {
 	}
 	try {
 		const logicData = await primulaFunction.getTableData(newPage);
-		/*
-    const tableData = logicData.tableData
-    const verifyInputData = logicData.verifyInputData
-    */
+		const tableData = logicData.tableData;
+		const verifyInputData = logicData.verifyInputData;
 		const advancedtableData = logicData.advancedtableData;
 		const validFormDataTEST = await primulaFunction.VerifyData(
 			data,
@@ -257,15 +258,34 @@ ipcMain.on('EMP_data', async (event, clientData) => {
 		console.log('validFormDataTEST: ', validFormDataTEST);
 		if (validFormDataTEST) {
 			console.log('success');
-			mainWindow.webContents.send('Results', advancedtableData[0]);
+			mainWindow.webContents.send('Results', tableData);
 		}
 	} catch (error) {
 		console.log(error);
 	}
+	event.sender.send('formSubmit-task-complete', 'success');
+});
+
+ipcMain.on('removeTicket', async (event, arg) => {
+	const newPage = globalPageContext;
+	console.log('newPage: ', newPage);
 	try {
 		await primulaFunction.removeArende(newPage);
+		await primulaFunction.closeBrowser(newPage);
+		mainWindow.webContents.send('details', 'removed');
 	} catch (error) {
 		console.log(error);
 	}
-	event.sender.send('formSubmit-task-complete', 'success');
+});
+
+ipcMain.on('sendTicket', async (event, arg) => {
+	const newPage = globalPageContext;
+	console.log('newPage: ', newPage);
+	try {
+		await primulaFunction.submitArende(newPage);
+		await primulaFunction.closeBrowser(newPage);
+		mainWindow.webContents.send('details', 'removed');
+	} catch (error) {
+		console.log(error);
+	}
 });

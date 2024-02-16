@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ColorRing } from 'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
 const { ipcRenderer } = window.require('electron');
 
 const EditDatesForm = () => {
@@ -12,8 +13,9 @@ const EditDatesForm = () => {
 	const [empSelected, setEmpSelected] = useState(null);
 	const [renderResult, setRenderResult] = useState(false);
 	const [resValues, setResValues] = useState({});
-
 	const [showLoading, setShowLoading] = useState(false);
+
+	let navigate = useNavigate();
 
 	// Fetch schedule
 	useEffect(() => {
@@ -144,10 +146,10 @@ const EditDatesForm = () => {
 	useEffect(() => {
 		const handleResult = (event, data) => {
 			console.log('Data sent:', data);
-			sessionStorage.setItem('result', data);
+			sessionStorage.setItem('result', JSON.stringify(data));
 			setResValues(data);
 			setShowLoading(false);
-			setRenderResult(true);
+			navigate('/results');
 		};
 
 		// Set up the event listener

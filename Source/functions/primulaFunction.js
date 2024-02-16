@@ -1,11 +1,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 const puppeteer = require('puppeteer');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+const { promisify } = require('util');
+const { exec: execCallback } = require('child_process');
+const exec = promisify(execCallback); // Promisify exec for async/await usage
 
 // headless: true or false
-const headless = false;
+const headless = true;
 
 // Declare variables
 let launchOptions;
@@ -28,7 +29,7 @@ async function login(username, password) {
 // AUTH MODULE
 async function loginRequest(username, password) {
 	try {
-		const curlCommand = `curl -X POST -d "ajax=1&username=${username}&realm=&credential=${password}" https://primula.mau.se:10443/remote/logincheck 2>NUL`;
+		const curlCommand = `curl -X POST -d "ajax=1&username=${username}&realm=&credential=${password}" https://primula.mau.se:10443/remote/logincheck 2>/dev/null`;
 		const { stdout, stderr } = await exec(curlCommand);
 		if (stdout.includes('ret=1')) {
 			console.log('ret1 true');
@@ -452,7 +453,7 @@ async function submitArende(newPage) {
 
 async function closeBrowser(newPage) {
 	await newPage.close();
-	//await browser.close()
+	//await browser.close();
 }
 
 async function mainCore(newPage, selected_option, month, salary, data, year) {

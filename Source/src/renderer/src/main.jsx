@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx';
 import Automatic from './pages/Automatic.jsx';
 import Primulafunction from './pages/Primulafunction.jsx';
 import Settings from './pages/Settings.jsx';
+import Results from './pages/Results.jsx';
 
 import './index.css';
 
@@ -34,6 +35,10 @@ root.render(
 				<Route
 					path="/settings"
 					element={<Settings />}
+				/>
+				<Route
+					path="/results"
+					element={<Results />}
 				/>
 			</Routes>
 		</HashRouter>
