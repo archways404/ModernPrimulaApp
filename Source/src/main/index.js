@@ -108,7 +108,7 @@ ipcMain.on('download_update', () => {
 
 // Restart and install update
 ipcMain.on('restart_app', () => {
-	autoUpdater.quitAndInstall(isForceRunAfter);
+	autoUpdater.quitAndInstall();
 });
 
 // Notify renderer when an update is available
