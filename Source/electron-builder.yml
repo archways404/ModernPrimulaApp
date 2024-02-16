@@ -38,5 +38,9 @@ appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: true
 publish:
-  provider: generic
-  url: https://github.com/archways404/ModernPrimulaApp
+  provider: github
+  repo: ModernPrimulaApp
+  owner: archways404
+  releaseType: release
+
+
