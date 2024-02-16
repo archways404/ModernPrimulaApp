@@ -2,7 +2,7 @@
 import { app, shell, BrowserWindow, ipcMain, nativeImage } from 'electron';
 import { join } from 'path';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
-const { autoUpdater, AppUpdater } = require('electron-updater');
+const { autoUpdater } = require('electron-updater');
 
 const path = require('path');
 const url = require('url');
@@ -95,7 +95,7 @@ app.on('window-all-closed', () => {
 });
 
 // Disable auto-download
-autoUpdater.autoDownload = true;
+autoUpdater.autoDownload = false;
 
 // Check for updates
 ipcMain.on('check_for_updates', () => {

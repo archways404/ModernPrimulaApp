@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-const { ipcRenderer } = window.require('electron');
+const { ipcRenderer, autoUpdater } = window.require('electron');
 
 const Home = () => {
 	const [updateAvailable, setUpdateAvailable] = useState(false);
