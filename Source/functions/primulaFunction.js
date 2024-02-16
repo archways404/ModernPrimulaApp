@@ -456,25 +456,6 @@ async function closeBrowser(newPage) {
 	//await browser.close();
 }
 
-async function mainCore(newPage, selected_option, month, salary, data, year) {
-	await setEmployment(newPage, selected_option);
-	await prepareInsertData(newPage, data);
-	try {
-		await selectHourlyWage(newPage);
-	} catch (error) {
-		console.log(error);
-	}
-	//await selectHourlyWage(newPage)
-	await insertWage(newPage, salary);
-	await insertDates(newPage, data, year, month);
-	await insertHours(newPage, data);
-	await pressCalculate(newPage);
-	await getTableData(newPage);
-	await VerifyData(newPage);
-	await removeArende(newPage);
-	await closeBrowser(newPage);
-}
-
 module.exports = {
 	closeBrowser,
 	login,
@@ -497,5 +478,4 @@ module.exports = {
 	VerifyData,
 	removeArende,
 	submitArende,
-	mainCore,
 };

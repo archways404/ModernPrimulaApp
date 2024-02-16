@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 const { ipcRenderer } = window.require('electron');
 
 const Results = () => {
-	const navigate = useNavigate();
-
 	const [storedData, setStoredData] = useState([]); // Initialize state to store the results
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		// Retrieve the results from sessionStorage

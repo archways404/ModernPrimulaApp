@@ -5,7 +5,6 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 const { autoUpdater } = require('electron-updater');
 
 const path = require('path');
-const url = require('url');
 
 let mainWindow;
 
@@ -60,16 +59,8 @@ function createWindow() {
 	}
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-	// Set app user model id for windows
 	electronApp.setAppUserModelId('com.electron');
-
-	// Default open or close DevTools by F12 in development
-	// and ignore CommandOrControl + R in production.
-	// see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
 
 	app.on('browser-window-created', (_, window) => {
 		optimizer.watchWindowShortcuts(window);
@@ -78,65 +69,53 @@ app.whenReady().then(() => {
 	createWindow();
 
 	app.on('activate', function () {
-		// On macOS it's common to re-create a window in the app when the
-		// dock icon is clicked and there are no other windows open.
 		if (BrowserWindow.getAllWindows().length === 0) createWindow();
 	});
 });
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
 		app.quit();
 	}
 });
 
-// Disable auto-download
+// UPDATE MODULES
 autoUpdater.autoDownload = false;
 
-// Check for updates
 ipcMain.on('check_for_updates', () => {
 	autoUpdater.checkForUpdates();
 });
 
-// Download update
 ipcMain.on('download_update', () => {
 	autoUpdater.downloadUpdate();
 });
 
-// Restart and install update
 ipcMain.on('restart_app', () => {
 	autoUpdater.quitAndInstall();
 });
 
-// Notify renderer when an update is available
 autoUpdater.on('update-available', (info) => {
 	console.log(info);
 	mainWindow.webContents.send('update_available');
 });
 
-// Notify renderer when an update is available
 autoUpdater.on('update-not-available', (info) => {
 	console.log(info);
 	mainWindow.webContents.send('update-not-available');
 });
 
-// Notify renderer when an update is available
 autoUpdater.on('update-error', (err) => {
 	console.log(err);
 	mainWindow.webContents.send('update-error', err);
 });
 
-// Notify renderer when an update has been downloaded
 autoUpdater.on('update-downloaded', () => {
 	mainWindow.webContents.send('update_downloaded');
 });
 
-// Listen for IPC messages and handle them as needed
+// LOGIN MODULE
 ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
-	console.log(arg); // prints the argument sent from renderer process
+	console.log(arg);
 	const username = arg.username;
 	const password = arg.password;
 	try {
@@ -163,9 +142,9 @@ ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 	}
 });
 
+// PRIMULA MODULES
 let globalPageContext = null;
-
-// Listen for IPC messages and handle them as needed
+// FETCH SCHEDULE DATA
 ipcMain.on('start-fetchSchedule-task', async (event, arg) => {
 	try {
 		console.log(arg);
@@ -183,14 +162,11 @@ ipcMain.on('start-fetchSchedule-task', async (event, arg) => {
 	}
 });
 
+// LOGIN TO PRIMULA & NAVIGATE
 ipcMain.on('start-formSubmit-task', async (event, arg) => {
-	console.log(arg); // prints the argument sent from renderer process
+	console.log(arg);
 	const username = arg.username;
 	const password = arg.password;
-	const month = arg.month;
-	const salary = arg.salary;
-	const data = arg.data;
-	console.log('arg 89: ', arg);
 
 	const newPage = await primulaFunction.loginToMain(username, password);
 	globalPageContext = newPage;
@@ -216,7 +192,7 @@ ipcMain.on('start-formSubmit-task', async (event, arg) => {
 		mainWindow.webContents.send('EMP', getOptions);
 	}
 });
-
+// SET EMPLOYMENT IF AVAILABLE
 ipcMain.on('EMP_data', async (event, clientData) => {
 	console.log('clientData: ', clientData);
 	const selected_option = clientData.empValue;
@@ -283,7 +259,7 @@ ipcMain.on('EMP_data', async (event, clientData) => {
 	}
 	event.sender.send('formSubmit-task-complete', 'success');
 });
-
+// REMOVE TICKET
 ipcMain.on('removeTicket', async (event, arg) => {
 	const newPage = globalPageContext;
 	console.log('newPage: ', newPage);
@@ -295,7 +271,7 @@ ipcMain.on('removeTicket', async (event, arg) => {
 		console.log(error);
 	}
 });
-
+// SUBMIT TICKET
 ipcMain.on('sendTicket', async (event, arg) => {
 	const newPage = globalPageContext;
 	console.log('newPage: ', newPage);
