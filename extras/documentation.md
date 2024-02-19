@@ -1,11 +1,17 @@
 
 # Documentation
 
-ModernPrimula is currently in Beta.
+ModernPrimula is currently released as a "preview-beta".
 
-If you wish to test the current version of the program or help with the beta testing, then this document will contain most or if not all the instuctions needed in order to run the program.
+What this means is that I cannot promise full functionality as of right now, but that I will continue to work on the application so that it can be released on all platforms (macOS, Windows & Linux).
 
-I plan on releasing the compiled version "ModernPrimula.exe" soon, but for now this is the only way to run the application.
+For now, the application seems to be working correctly on Windows with all features implemented, but use at your own risk.
+
+Windows is like I said supported, but I have signed it with a self-signed certificate, meaning that it will say that the "application can be dangerous", simply ignore that message and install it regardless -> all that it is complaining about is that it cannot verifiy online that the certificate is actually from me (since I do not own a code-sigining cerificate).
+
+MacOS will be supported fully, however the main concern is that for it to happen, I must get a code-signing certificate from Apple (which is around $100), so until then -> autoUpdates and installation via the releases section will not work correctly. There are of course paths around this issue, but most of them can get quite technical so I have outlined the most simple way below on how to compile the program yourself and install it that way.
+
+Linux is currently not supported, meaning that I haven't tested it yet, so feel free to compile it and see if it works. I will update the main readme.md file with the versions that are supported etc.
 
 ### Requirements
 
