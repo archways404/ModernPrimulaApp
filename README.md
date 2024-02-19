@@ -14,9 +14,13 @@
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/archways404/ModernPrimulaApp">
 </p>
 
-## Beta Instructions & Documentation
+## Instructions & Documentation
 
-Link to the Documentation & Instructions can be found [here](https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md)
+[![macOS Instructions](https://img.shields.io/badge/-macOS%20Instructions-red?style=for-the-badge)](https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md#macos-installation)
+
+[![Windows Instructions](https://img.shields.io/badge/-Windows%20Instructions-blue?style=for-the-badge)](https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md#windows-installation)
+
+[![Documentation & Instructions](https://img.shields.io/badge/-Documentation%20&%20Instructions-green?style=for-the-badge)](https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md)
 
 ## Features
 
