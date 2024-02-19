@@ -29,6 +29,16 @@
 - Improved UI
 - Currently available on Windows through releases tab (support for macOS & Linux planned)
 
+## Roadmap
+I plan on adding features & more which will be listed here and you can check the status on them in the "projects" tab.
+
+- Overhaul of the UI
+- Support for macOS
+- Creation of an error code-system (troubleshooting)
+- Support for Linux
+- Status Messages
+- Code Refactoring
+
 ## Maintainer(s) & Developer(s)
 
 [archways404](https://www.github.com/archways404)
