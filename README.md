@@ -27,7 +27,7 @@
 - Automatic time reporting
 - Manual time reporting
 - Improved UI
-- Currently available on MacOS and Windows
+- Currently available on Windows through releases tab (support for macOS & Linux planned)
 
 ## Maintainer(s) & Developer(s)
 
