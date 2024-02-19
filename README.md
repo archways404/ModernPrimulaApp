@@ -1,15 +1,18 @@
 
 ![Logo](https://github.com/archways404/ModernPrimulaApp/blob/main/images/image_transparent_all-removebg-preview.png)
 
-# ModernPrimula
-
-ModernPrimula is an application that simplifies and automates time reporting in Primula.
-
-[![Latest Release](https://img.shields.io/github/v/release/archways404/ModernPrimulaApp?style=flat-square)](https://github.com/archways404/ModernPrimulaApp/releases/latest)
- 
-![GitHub all releases](https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total?style=flat-square) 
-
-![GitHub Repo stars](https://img.shields.io/github/stars/archways404/ModernPrimulaApp)
+<p align="center">
+<a href="https://github.com/archways404/ModernPrimulaApp/releases/latest">
+  <img alt="Latest Release" src="https://img.shields.io/github/v/release/archways404/ModernPrimulaApp?style=flat-square&label=latest&color=green">
+</a>
+ <br>
+ <img alt="Windows - Supported" src="https://img.shields.io/badge/Windows-Supported-green?style=flat-square">
+  <img alt="macOS - Unsupported" src="https://img.shields.io/badge/macOS-Unsupported-red?style=flat-square">
+  <img alt="Linux - Unsupported" src="https://img.shields.io/badge/Linux-Unsupported-red?style=flat-square">
+ <br>
+  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total?style=flat-square">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/archways404/ModernPrimulaApp">
+</p>
 
 ## Beta Instructions & Documentation
 
