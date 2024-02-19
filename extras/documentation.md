@@ -11,6 +11,14 @@ I plan on releasing the compiled version "ModernPrimula.exe" soon, but for now t
 
 - NodeJS must be installed
 
+# macos-installation
+
+test123
+
+# windows-installation
+test222
+
+
 ### Installation
 
 1. [Download](https://github.com/archways404/modernprimulaapp/archive/refs/heads/main.zip) or Clone the [Repository](https://github.com/archways404/modernprimulaapp)
