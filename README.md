@@ -48,9 +48,11 @@ I plan on adding features & more which will be listed here and you can check the
 
 **UI:** React, Vite, TailwindCSS
 
-**Engine:** Electron-Vite, Puppeteer, Cheerio, Toastify
+**Framework:** Electron-Vite
 
-**Server:** NodeJS
+**Plugins:** Puppeteer, Cheerio, Toastify
+
+**Engine:** NodeJS
 
 
 ## Support, Feedback & Bug-Reporting
