@@ -7,7 +7,7 @@
 </a>
  <br>
  <img alt="Windows - Supported" src="https://img.shields.io/badge/Windows-Supported-green?style=flat-square">
-  <img alt="macOS - Unsupported" src="https://img.shields.io/badge/macOS-Unsupported-red?style=flat-square">
+  <img alt="macOS - Supported" src="https://img.shields.io/badge/macOS-Supported-yellow?style=flat-square">
   <img alt="Linux - Unsupported" src="https://img.shields.io/badge/Linux-Unsupported-red?style=flat-square">
  <br>
   <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/archways404/ModernPrimulaApp/total?style=flat-square">
