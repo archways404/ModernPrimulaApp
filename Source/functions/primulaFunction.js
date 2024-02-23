@@ -449,10 +449,6 @@ async function removeArende(newPage) {
 }
 
 async function submitArende(newPage) {
-	await newPage.on('dialog', async (dialog) => {
-		console.log('Dialog message:', dialog.message());
-		await dialog.accept();
-	});
 	const submitA = await newPage.locator('input[type="submit"][value="Skicka"]');
 	await submitA.click();
 	await newPage.waitForTimeout(500);
