@@ -21,6 +21,16 @@ Linux is currently not supported, meaning that I haven't tested it yet, so feel 
 
 Since Apple does not allow installation of non-signed applications to be installed, the only way to install the application on macOS is to compile it yourself and then install it.
 
+To compile it yourself using the install.sh script:
+
+1. Download install.sh
+
+2. Run ```chmod +x install.sh```
+
+3. Run ```./install.sh``` to install & compile the application.
+
+4. The .dmg file should be in the folder ```/dist```
+
 To install on macOS, follow the steps below to compile the application:
 
 1. [Download](https://github.com/archways404/modernprimulaapp/archive/refs/heads/main.zip) or Clone the [Repository](https://github.com/archways404/modernprimulaapp)

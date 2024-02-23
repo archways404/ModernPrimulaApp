@@ -6,14 +6,27 @@ const { autoUpdater } = require('electron-updater');
 
 const path = require('path');
 
+/**
+ * IMPORTS [EXTERNAL FUNCTIONS]
+ */
+const { sFunctions, pFunctions } = require('../../functions/imports.js');
+
+/**
+ * [DECLARATION]
+ */
 let mainWindow;
+let globalPageContext = null;
+autoUpdater.autoDownload = false;
 
-const fetchSchedule = require('../../functions/fetchSchedule.js');
-const primulaFunction = require('../../functions/primulaFunction.js');
-
+/**
+ * ICON CONFIGURATION
+ */
 const iconPath = path.join(__dirname, 'logo-t.png');
 const icon = nativeImage.createFromPath(iconPath);
 
+/**
+ * WINDOW CREATION
+ */
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 900,
@@ -79,9 +92,9 @@ app.on('window-all-closed', () => {
 	}
 });
 
-// UPDATE MODULES
-autoUpdater.autoDownload = false;
-
+/**
+ * UPDATE CONFIGURATION
+ */
 ipcMain.on('check_for_updates', () => {
 	autoUpdater.checkForUpdates();
 });
@@ -113,27 +126,32 @@ autoUpdater.on('update-downloaded', () => {
 	mainWindow.webContents.send('update_downloaded');
 });
 
-// LOGIN MODULE
+/**
+ * VERIFY LOGIN DETAILS
+ *
+ * TODO: CHANGE 'start-verifyLoginDetails-task' to something more descriptive
+ */
 ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 	console.log(arg);
-	const username = arg.username;
-	const password = arg.password;
 	try {
-		const login = await primulaFunction.login(username, password);
-		console.log(login);
-		if (login === 200) {
+		const loginStatus = await pFunctions.attemptLogin(
+			arg.username,
+			arg.password
+		);
+		console.log(loginStatus);
+		if (loginStatus === 200) {
 			console.log('Login successful');
 			event.sender.send('verifyLoginDetails-task-complete', {
 				status: 'success',
-				username: username,
-				password: password,
+				username: arg.username,
+				password: arg.password,
 			});
 		} else {
 			console.log('Login failed');
 			event.sender.send('verifyLoginDetails-task-complete', {
 				status: 'failed',
-				username: username,
-				password: password,
+				username: arg.username,
+				password: arg.password,
 			});
 		}
 	} catch (error) {
@@ -142,57 +160,60 @@ ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 	}
 });
 
-// PRIMULA MODULES
-let globalPageContext = null;
-// FETCH SCHEDULE DATA
+/**
+ * FETCH SCHEDULE
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
+ */
 ipcMain.on('start-fetchSchedule-task', async (event, arg) => {
 	try {
 		console.log(arg);
-		const month = arg.month;
-		const name = arg.name;
-		const salary = arg.salary;
-		const data = await fetchSchedule.formatKronoxData(month, name, salary);
-		console.log(data);
-		const kronoxData = await fetchSchedule.getKronoxData(data);
+		const modifiedData = await sFunctions.createURL(
+			arg.month,
+			arg.name,
+			arg.salary
+		);
+		console.log(modifiedData);
+		const kronoxData = await sFunctions.getSchedule(modifiedData);
 		console.log(kronoxData);
-		// Handle the background task and send a response back if needed
 		event.sender.send('fetchSchedule-task-complete', kronoxData);
 	} catch (error) {
 		console.log(error);
 	}
 });
 
-// LOGIN TO PRIMULA & NAVIGATE
+/**
+ * LOGIN TO PRIMULA & NAVIGATE
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
+ */
 ipcMain.on('start-formSubmit-task', async (event, arg) => {
 	console.log(arg);
-	const username = arg.username;
-	const password = arg.password;
-
-	const newPage = await primulaFunction.loginToMain(username, password);
+	const newPage = await pFunctions.loginToMain(arg.username, arg.password);
 	globalPageContext = newPage;
-
-	await primulaFunction.loginToPrimula(newPage, username, password);
-
-	const checkMFA = await primulaFunction.checkMFA(newPage);
+	await pFunctions.loginToPrimula(newPage, arg.username, arg.password);
+	const checkMFA = await pFunctions.promptMFA(newPage);
 	console.log(checkMFA);
 	if (checkMFA === true) {
-		const mfaCode = await primulaFunction.getMFA(newPage);
+		const mfaCode = await pFunctions.getMFA(newPage);
 		mainWindow.webContents.send('MFA', mfaCode);
 	}
-
-	await primulaFunction.primulaNavigate(newPage);
+	await pFunctions.primulaNavigate(newPage);
 	await mainWindow.webContents.send('MFAdone', 'done');
-
-	const checkEmployment = await primulaFunction.checkEmployment(newPage);
+	const checkEmployment = await pFunctions.checkEmployment(newPage);
 	console.log('CheckEmployment:', checkEmployment);
-
 	if (checkEmployment === true) {
-		const getOptions = await primulaFunction.getEmployment(newPage);
+		const getOptions = await pFunctions.getEmployment(newPage);
 		console.log('getOptions: ', getOptions);
 		mainWindow.webContents.send('EMP', getOptions);
 	}
 });
-// SET EMPLOYMENT IF AVAILABLE
+
+/**
+ * IF EMPLOYMENT FORM IS REQUIRED
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
+ */
 ipcMain.on('EMP_data', async (event, clientData) => {
 	console.log('clientData: ', clientData);
 	const selected_option = clientData.empValue;
@@ -202,50 +223,47 @@ ipcMain.on('EMP_data', async (event, clientData) => {
 	const newPage = globalPageContext;
 	const year = new Date().getFullYear();
 	console.log('newPage: ', newPage);
-
-	//await primulaFunction.mainCore(newPage, selected_option, month, salary, data, year)
-
 	try {
-		await primulaFunction.setEmployment(newPage, selected_option);
+		await pFunctions.setEmployment(newPage, selected_option);
 	} catch (error) {
 		console.log(error);
 	}
 	try {
-		await primulaFunction.prepareInsertData(newPage, data);
+		await pFunctions.prepareInsertData(newPage, data);
 	} catch (error) {
 		console.log(error);
 	}
 	try {
-		await primulaFunction.selectHourlyWage(newPage);
+		await pFunctions.selectHourlyWage(newPage);
 	} catch (error) {
 		console.log(error);
 	}
 	try {
-		await primulaFunction.insertWage(newPage, salary);
+		await pFunctions.insertWage(newPage, salary);
 	} catch (error) {
 		console.log(error);
 	}
 	try {
-		await primulaFunction.insertHours(newPage, data);
+		await pFunctions.insertHours(newPage, data);
 	} catch (error) {
 		console.log(error);
 	}
 	try {
-		await primulaFunction.insertDates(newPage, data, year, month);
+		await pFunctions.insertDates(newPage, data, year, month);
 	} catch (error) {
 		console.log(error);
 	}
 	try {
-		await primulaFunction.pressCalculate(newPage);
+		await pFunctions.calculate(newPage);
 	} catch (error) {
 		console.log(error);
 	}
 	try {
-		const logicData = await primulaFunction.getTableData(newPage);
+		const logicData = await pFunctions.getSummary(newPage);
 		const tableData = logicData.tableData;
 		const verifyInputData = logicData.verifyInputData;
 		const advancedtableData = logicData.advancedtableData;
-		const validFormDataTEST = await primulaFunction.VerifyData(
+		const validFormDataTEST = await pFunctions.verifyData(
 			data,
 			advancedtableData
 		);
@@ -259,25 +277,31 @@ ipcMain.on('EMP_data', async (event, clientData) => {
 	}
 	event.sender.send('formSubmit-task-complete', 'success');
 });
-// REMOVE TICKET
+
+/**
+ * REMOVE TICKET
+ */
 ipcMain.on('removeTicket', async (event, arg) => {
 	const newPage = globalPageContext;
 	console.log('newPage: ', newPage);
 	try {
-		await primulaFunction.removeArende(newPage);
-		await primulaFunction.closeBrowser(newPage);
+		await pFunctions.removeTicket(newPage);
+		await pFunctions.closeBrowser(newPage);
 		mainWindow.webContents.send('details', 'removed');
 	} catch (error) {
 		console.log(error);
 	}
 });
-// SUBMIT TICKET
+
+/**
+ * SUBMIT TICKET
+ */
 ipcMain.on('sendTicket', async (event, arg) => {
 	const newPage = globalPageContext;
 	console.log('newPage: ', newPage);
 	try {
-		await primulaFunction.submitArende(newPage);
-		await primulaFunction.closeBrowser(newPage);
+		await pFunctions.submitTicket(newPage);
+		await pFunctions.closeBrowser(newPage);
 		mainWindow.webContents.send('details', 'removed');
 	} catch (error) {
 		console.log(error);
