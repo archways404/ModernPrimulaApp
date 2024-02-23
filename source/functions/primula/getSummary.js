@@ -4,10 +4,23 @@ const puppeteer = require('puppeteer');
 
 /**
  * GET-SUMMARY MODULE
+ *
+ * * getTableData
+ *
+ * The function "getTableData" extracts and returns data from a specific table structure on a webpage.
+ *
+ * This function waits for a table with a specific class to be available, then iterates through its rows
+ * to gather data into three different arrays based on the cell content and structure. It constructs objects
+ * for each row to capture various details, such as 'Löneart', 'From', 'Tom', 'Antal', 'ÁPris', 'Tillfällen',
+ * and 'Belopp'. These objects are then stored in corresponding arrays for different purposes: `tableData`
+ * for a basic set of data, `verifyInputData` for a subset focusing on verification purposes, and
+ * `advancedtableData` for a comprehensive dataset including all extracted details.
  */
 
 /**
- * INFO
+ * @param {object} newPage
+ * @returns {Promise<{tableData: Array, verifyInputData: Array, advancedtableData: Array}>}
+ * @async
  */
 async function getTableData(newPage) {
 	await newPage.locator('table.frame-color table.tableWithSpace');

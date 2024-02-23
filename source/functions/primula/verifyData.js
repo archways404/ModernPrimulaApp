@@ -4,12 +4,26 @@ const puppeteer = require('puppeteer');
 
 /**
  * VERIFY-DATA MODULE
+ *
+ * * verifyData
+ *
+ * The function "verifyData" verifies that the data extracted and transformed from a webpage matches the expected dataset.
+ *
+ * This function compares detailed entries from `advancedtableData` against a simpler `data` format, focusing on specific fields like 'Löneart', 'From', and 'Antal' to ensure consistency and correctness of the data transformation process.
+ *
+ * It filters out entries from `advancedtableData` based on 'Löneart' values, constructs a list of unique 'From' values, and then verifies each entry against the corresponding entry in `data`.
+ *
+ * The function logs detailed comparisons and concludes by indicating whether the data is valid based on the matching process.
+ *
  */
 
 /**
- * INFO
+ * @param {Array<Object>} data
+ * @param {Array<Object>} advancedtableData
+ * @returns {Promise<number>}
+ * @async
  */
-async function VerifyData(data, advancedtableData) {
+async function verifyData(data, advancedtableData) {
 	let validFormData = 1;
 	const filteredAdvancedData = advancedtableData.filter(
 		(item) => item['Löneart'] !== '4200  Sem.ers övriga'
@@ -67,5 +81,5 @@ async function VerifyData(data, advancedtableData) {
 }
 
 module.exports = {
-	VerifyData,
+	verifyData,
 };

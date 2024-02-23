@@ -4,10 +4,24 @@ const puppeteer = require('puppeteer');
 
 /**
  * NAVIGATION MODULE
+ * 
+ * * primulaNavigate
+ * 
+ * The function "primulaNavigate" navigates through a web page in a specified sequence using Puppeteer. 
+ * 
+ * The function performs a series of clicks to navigate from the language selection to a specific form, and then selects an option from a dropdown.
+ * Each step involves waiting for elements to be available and navigations to complete, ensuring that the sequence
+ * is followed accurately. 
+ * 
+ * This could be particularly useful for automated interactions with web applications that
+ * require a series of navigational steps to reach a specific page or form, such as an internal payroll or HR system.
+ * 
  */
 
 /**
- * INFO
+ * @param {object} newPage
+ * @returns {Promise<void>}
+ * @async
  */
 async function primulaNavigate(newPage) {
 	const [response_language_swe] = await Promise.all([

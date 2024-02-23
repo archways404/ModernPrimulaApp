@@ -4,24 +4,34 @@ const cheerio = require('cheerio');
 
 /**
  * GET-SCHEDULE MODULE
+ *
+ * * getSchedule
+ *
+ * The function "getSchedule" fetches the HTML content from the given Kronox URL, parses it to find schedule data, and formats this data into a more usable form.
+ *
+ * It specifically looks for elements with classes 'data-grey' and 'data-white' to identify schedule entries, extracts dates and times, calculates the duration of each entry in hours, and formats each entry as a string of the form "DD,HH.H" where DD is the day and HH.H is the time in hours.
  */
 
 /**
- * INFO
+ * @param {Object} modifiedData
+ * @returns {Promise<Array<string>>}
+ * @async
+ * @throws {Error}
  */
-async function getKronoxData(formattedData) {
+async function getSchedule(modifiedData) {
 	try {
-		const response = await fetch(formattedData.url);
+		const response = await fetch(modifiedData.url);
 		if (!response.ok) {
 			throw new Error('Network response was not ok');
 		}
 		const html = await response.text();
 		const $ = cheerio.load(html);
 		const data = [];
+
 		$('.data-grey, .data-white').each((index, row) => {
 			const cells = $(row).find('td');
-			const dateText = cells.eq(2).text().trim(); // e.g., "1 Sep"
-			const time = cells.eq(3).text().trim(); // e.g., "09:00-14:00"
+			const dateText = cells.eq(2).text().trim();
+			const time = cells.eq(3).text().trim();
 			let date = '';
 			const dateMatch = dateText.match(/\d+/);
 			if (dateMatch) {
@@ -54,5 +64,5 @@ async function getKronoxData(formattedData) {
 }
 
 module.exports = {
-	getKronoxData,
+	getSchedule,
 };

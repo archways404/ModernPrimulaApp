@@ -3,7 +3,26 @@
 const puppeteer = require('puppeteer');
 
 /**
- * PUPPETEER INIT MODULE
+ * INIT-PUPPETEER MODULE
+ *
+ * * loginToMain
+ *
+ * The function "loginToMain" initializes a Puppeteer browser instance with specified launch options based on the headless mode,
+ * navigates to the login page, performs a login action with provided credentials, and then navigates to
+ * a subsequent page after logging in.
+ *
+ * This function is designed to handle the initial login process
+ * and manage browser launch configurations dynamically based on the desired headless state.
+ *
+ * * loginToPrimula
+ *
+ * The function "loginToPrimula" logs into Primula, a specific web application, using a new page instance from a Puppeteer browser.
+ *
+ * This function waits for specific selectors to ensure the page and required elements are fully loaded
+ * before attempting actions such as clicking and typing. It is specifically tailored to handle the login
+ * process on the Primula web application, including navigating through multi-step login processes
+ * and handling custom username modifications.
+ *
  */
 
 // headless: true or false
@@ -13,7 +32,10 @@ const headless = true;
 let launchOptions;
 
 /**
- * INFO
+ * @param {string} username
+ * @param {string} password
+ * @returns {Promise<object>}
+ * @async
  */
 async function loginToMain(username, password) {
 	try {
@@ -69,7 +91,11 @@ async function loginToMain(username, password) {
 }
 
 /**
- * INFO
+ * @param {object} newPage
+ * @param {string} username
+ * @param {string} password
+ * @returns {Promise<void>}
+ * @async
  */
 async function loginToPrimula(newPage, username, password) {
 	const [response_login] = await Promise.all([

@@ -4,10 +4,22 @@ const puppeteer = require('puppeteer');
 
 /**
  * PREPARE-DATA MODULE
+ * 
+ * * prepareInsertData
+ * 
+ * The function "prepareInsertData" prepares a web page for data insertion by dynamically adding the necessary number of input rows based on the provided data array.
+ * 
+ * It iterates through the data, logging each row for verification, and then repeatedly clicks a button to add new input rows until
+ * the number of rows matches the length of the data array. This function is particularly useful in scenarios where a form on a web page
+ * requires the addition of multiple entries, and the number of required entries varies dynamically.
+ * 
  */
 
 /**
- * INFO
+ * @param {object} newPage 
+ * @param {Array} data 
+ * @returns {Promise<void>}
+ * @async
  */
 async function prepareInsertData(newPage, data) {
 	for (row in data) {

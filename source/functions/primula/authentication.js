@@ -4,12 +4,36 @@ const fetch = require('node-fetch');
 
 /**
  * AUTHENTICATION MODULE
+ * 
+ * * attemptLogin
+ * 
+ * The function "attemptLogin" attempts to log in with the provided username and password.
+ * 
+ * This function tries to log in using the credentials provided by calling the `loginRequest` function.
+ * It logs the result of the login attempt. If the login is successful (as indicated by `loginRequest` returning true),
+ * it returns a status code of 200. If the login fails, it returns 405. If an exception occurs during the process,
+ * it catches the exception, logs the error, and returns 500.
+ * 
+ * * loginRequest
+ * 
+ * The function "loginRequest" sends a login request to a predefined URL with the provided username and password.
+ * 
+ * This function performs an asynchronous POST request to a specified URL intended for login checks, 
+ * sending the username and password as form-urlencoded data. It evaluates the response text to determine 
+ * the success of the login attempt. If the response text includes 'ret=1', the login is considered successful, 
+ * and true is returned. If 'ret=0' is found or if the response doesn't match the expected success criteria, 
+ * false is returned to indicate a failed login attempt. In case of a fetch error, the error is logged, 
+ * and false is returned.
+ * 
  */
 
 /**
- * INFO
+ * @param {string} username
+ * @param {string} password
+ * @returns {Promise<number>}
+ * @async
  */
-async function login(username, password) {
+async function attemptLogin(username, password) {
 	try {
 		const resLoginAttempt = await loginRequest(username, password);
 		console.log('resLoginAttempt: ', resLoginAttempt);
@@ -25,7 +49,10 @@ async function login(username, password) {
 }
 
 /**
- * INFO
+ * @param {string} username 
+ * @param {string} password
+ * @returns {Promise<boolean>}
+ * @async
  */
 async function loginRequest(username, password) {
 	try {
@@ -56,6 +83,6 @@ async function loginRequest(username, password) {
 }
 
 module.exports = {
-	login,
+	attemptLogin,
 	loginRequest,
 };
