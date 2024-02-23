@@ -22,6 +22,7 @@ fi
 # Define the repository URL and the directory name to clone into
 REPO_URL="https://github.com/archways404/ModernPrimulaApp.git"
 REPO_DIR="ModernPrimulaApp"
+REPO_DIR_SOURCE="source"
 
 # Clone the repository
 echo "Cloning the repository..."
@@ -35,6 +36,9 @@ fi
 
 # Change directory to the cloned repository
 cd $REPO_DIR
+
+# Change directory to the root
+cd $REPO_DIR_SOURCE
 
 # Install dependencies
 echo "Installing dependencies..."
