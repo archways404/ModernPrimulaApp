@@ -173,7 +173,7 @@ ipcMain.on('start-fetchSchedule-task', async (event, arg) => {
 			arg.name,
 			arg.salary
 		);
-		console.log(data);
+		console.log(modifiedData);
 		const kronoxData = await sFunctions.getSchedule(modifiedData);
 		console.log(kronoxData);
 		event.sender.send('fetchSchedule-task-complete', kronoxData);
