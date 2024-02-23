@@ -128,27 +128,30 @@ autoUpdater.on('update-downloaded', () => {
 
 /**
  * VERIFY LOGIN DETAILS
+ *
+ * TODO: CHANGE 'start-verifyLoginDetails-task' to something more descriptive
  */
 ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 	console.log(arg);
-	const username = arg.username;
-	const password = arg.password;
 	try {
-		const login = await pFunctions.attemptLogin(username, password);
-		console.log(login);
-		if (login === 200) {
+		const loginStatus = await pFunctions.attemptLogin(
+			arg.username,
+			arg.password
+		);
+		console.log(loginStatus);
+		if (loginStatus === 200) {
 			console.log('Login successful');
 			event.sender.send('verifyLoginDetails-task-complete', {
 				status: 'success',
-				username: username,
-				password: password,
+				username: arg.username,
+				password: arg.password,
 			});
 		} else {
 			console.log('Login failed');
 			event.sender.send('verifyLoginDetails-task-complete', {
 				status: 'failed',
-				username: username,
-				password: password,
+				username: arg.username,
+				password: arg.password,
 			});
 		}
 	} catch (error) {
@@ -159,18 +162,20 @@ ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 
 /**
  * FETCH SCHEDULE
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
  */
 ipcMain.on('start-fetchSchedule-task', async (event, arg) => {
 	try {
 		console.log(arg);
-		const month = arg.month;
-		const name = arg.name;
-		const salary = arg.salary;
-		const data = await sFunctions.createURL(month, name, salary);
+		const modifiedData = await sFunctions.createURL(
+			arg.month,
+			arg.name,
+			arg.salary
+		);
 		console.log(data);
-		const kronoxData = await sFunctions.getSchedule(data);
+		const kronoxData = await sFunctions.getSchedule(modifiedData);
 		console.log(kronoxData);
-		// Handle the background task and send a response back if needed
 		event.sender.send('fetchSchedule-task-complete', kronoxData);
 	} catch (error) {
 		console.log(error);
@@ -179,30 +184,24 @@ ipcMain.on('start-fetchSchedule-task', async (event, arg) => {
 
 /**
  * LOGIN TO PRIMULA & NAVIGATE
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
  */
 ipcMain.on('start-formSubmit-task', async (event, arg) => {
 	console.log(arg);
-	const username = arg.username;
-	const password = arg.password;
-
-	const newPage = await pFunctions.loginToMain(username, password);
+	const newPage = await pFunctions.loginToMain(arg.username, arg.password);
 	globalPageContext = newPage;
-
-	await pFunctions.loginToPrimula(newPage, username, password);
-
+	await pFunctions.loginToPrimula(newPage, arg.username, arg.password);
 	const checkMFA = await pFunctions.promptMFA(newPage);
 	console.log(checkMFA);
 	if (checkMFA === true) {
 		const mfaCode = await pFunctions.getMFA(newPage);
 		mainWindow.webContents.send('MFA', mfaCode);
 	}
-
 	await pFunctions.primulaNavigate(newPage);
 	await mainWindow.webContents.send('MFAdone', 'done');
-
 	const checkEmployment = await pFunctions.checkEmployment(newPage);
 	console.log('CheckEmployment:', checkEmployment);
-
 	if (checkEmployment === true) {
 		const getOptions = await pFunctions.getEmployment(newPage);
 		console.log('getOptions: ', getOptions);
@@ -212,6 +211,8 @@ ipcMain.on('start-formSubmit-task', async (event, arg) => {
 
 /**
  * IF EMPLOYMENT FORM IS REQUIRED
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
  */
 ipcMain.on('EMP_data', async (event, clientData) => {
 	console.log('clientData: ', clientData);
