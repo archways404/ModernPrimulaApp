@@ -144,7 +144,7 @@ ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 
 // PRIMULA MODULES
 let globalPageContext = null;
-// FETCH SCHEDULE DATA
+// FETCH SCHEDULE
 ipcMain.on('start-fetchSchedule-task', async (event, arg) => {
 	try {
 		console.log(arg);
