@@ -11,23 +11,7 @@ const url = require('url');
  * IMPORTS [EXTERNAL FUNCTIONS]
  */
 
-// SCHEDULE MODULES
-const searchQuery = require('../../functions/primula/create-search-query.js');
-const getSchedule = require('../../functions/primula/get-schedule.js');
-
-// PRIMULA MODULES
-const authentication = require('../../functions/primula/authentication.js');
-const initPuppeteer = require('../../functions/primula/init-puppeteer.js');
-const TwoFA = require('../../functions/primula/2FA.js');
-const navigation = require('../../functions/primula/navigate.js');
-const employment = require('../../functions/primula/employment.js');
-const prepareData = require('../../functions/primula/prepare-data.js');
-const insertWage = require('../../functions/primula/insert-wage.js');
-const insertHours = require('../../functions/primula/insert-hours.js');
-const insertDates = require('../../functions/primula/insert-dates.js');
-const calculate = require('../../functions/primula/calculate.js');
-const verifyData = require('../../functions/primula/verify-data.js');
-const handleAction = require('../../functions/primula/handle-action.js');
+const { sFunctions, pFunctions } = require('../../functions/imports.js');
 
 // TODO OLD IMPORTS (REMOVE POST TESTING)
 const fetchSchedule = require('../../functions/fetchSchedule.js');
