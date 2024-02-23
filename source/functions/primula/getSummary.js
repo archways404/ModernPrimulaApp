@@ -22,7 +22,7 @@ const puppeteer = require('puppeteer');
  * @returns {Promise<{tableData: Array, verifyInputData: Array, advancedtableData: Array}>}
  * @async
  */
-async function getTableData(newPage) {
+async function getSummary(newPage) {
 	await newPage.locator('table.frame-color table.tableWithSpace');
 	const table = await newPage.$('table.frame-color table.tableWithSpace');
 	// Check if the table was found
@@ -77,5 +77,5 @@ async function getTableData(newPage) {
 }
 
 module.exports = {
-	getTableData,
+	getSummary,
 };

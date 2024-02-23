@@ -63,6 +63,4 @@ async function getSchedule(modifiedData) {
 	}
 }
 
-module.exports = {
-	getSchedule,
-};
+module.exports = getSchedule;

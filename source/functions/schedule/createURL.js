@@ -36,6 +36,4 @@ async function createURL(user_submit_month, name, salary) {
 	return modifiedData;
 }
 
-module.exports = {
-	createURL,
-};
+module.exports = createURL;

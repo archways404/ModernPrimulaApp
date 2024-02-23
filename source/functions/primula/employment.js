@@ -5,6 +5,12 @@ const puppeteer = require('puppeteer');
 /**
  * EMPLOYMENT MODULE
  * 
+ * * checkEmployment
+ * 
+ * The function "checkEmployment" checks if the employment selector is present on the page within a specified timeout.
+ * 
+ * This function is used to verify if the employment selection can be made, indicating the presence of the employment form on the current page.
+ * 
  * * getEmployment
  * 
  * The function "getEmployment" retrieves employment options from a dropdown on a webpage.
@@ -24,6 +30,26 @@ const puppeteer = require('puppeteer');
  * the submission has been processed.
  * 
  */
+
+/**
+ * @param {Page} newPage
+ * @returns {Promise<boolean>} 
+ */
+async function checkEmployment(newPage) {
+	try {
+		const valid = await newPage.waitForSelector(
+			'xpath=//html/body/div/div[2]/div[5]/div/div[2]/form/table/tbody/tr/td/table/tbody/tr[3]/td/select',
+			{ timeout: 5000 }
+		);
+		if (valid) {
+			return true;
+		} else {
+			return false;
+		}
+	} catch (error) {
+		return false;
+	}
+}
 
 /**
  * @param {object} newPage 
@@ -82,6 +108,7 @@ async function setEmployment(newPage, selected_option) {
 }
 
 module.exports = {
+	checkEmployment,
 	getEmployment,
 	setEmployment,
 };

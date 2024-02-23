@@ -34,5 +34,5 @@ async function selectHourlyWage(newPage) {
 }
 
 module.exports = {
-	prepareInsertData,
+	selectHourlyWage,
 };
