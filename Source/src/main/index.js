@@ -3,6 +3,7 @@ import { app, shell, BrowserWindow, ipcMain, nativeImage } from 'electron';
 import { join } from 'path';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 const { autoUpdater } = require('electron-updater');
+const { execSync } = require('child_process');
 
 const path = require('path');
 
@@ -128,10 +129,8 @@ autoUpdater.on('update-downloaded', () => {
 
 /**
  * VERIFY LOGIN DETAILS
- *
- * TODO: CHANGE 'start-verifyLoginDetails-task' to something more descriptive
  */
-ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
+ipcMain.on('start-verifyLoginDetails', async (event, arg) => {
 	console.log(arg);
 	try {
 		const loginStatus = await pFunctions.attemptLogin(
@@ -141,14 +140,14 @@ ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 		console.log(loginStatus);
 		if (loginStatus === 200) {
 			console.log('Login successful');
-			event.sender.send('verifyLoginDetails-task-complete', {
+			event.sender.send('verifyLoginDetails-complete', {
 				status: 'success',
 				username: arg.username,
 				password: arg.password,
 			});
 		} else {
 			console.log('Login failed');
-			event.sender.send('verifyLoginDetails-task-complete', {
+			event.sender.send('verifyLoginDetails-complete', {
 				status: 'failed',
 				username: arg.username,
 				password: arg.password,
@@ -156,7 +155,7 @@ ipcMain.on('start-verifyLoginDetails-task', async (event, arg) => {
 		}
 	} catch (error) {
 		console.log(error);
-		event.sender.send('verifyLoginDetails-task-complete', { status: error });
+		event.sender.send('verifyLoginDetails-complete', { status: error });
 	}
 });
 

@@ -21,20 +21,35 @@ const Primulafunction = () => {
 
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-center pt-20 pr-10 pl-20">
-			<h1 className="text-6xl font-bold tracking-tighter mb-10">
-				<span className="text-red-500">M</span>
-				<span className="text-yellow-500">o</span>
-				<span className="text-green-500">d</span>
-				<span className="text-blue-500">e</span>
-				<span className="text-indigo-500">r</span>
-				<span className="text-purple-500">n</span>
-				<span className="text-pink-500">P</span>
-				<span className="text-red-500">r</span>
-				<span className="text-yellow-500">i</span>
-				<span className="text-green-500">m</span>
-				<span className="text-blue-500">u</span>
-				<span className="text-indigo-500">l</span>
-				<span className="text-purple-500">a</span>
+			<style>
+				{`
+            @keyframes rgbTextEffect {
+              0% { color: #ff0000; } /* Red */
+              33% { color: #00ff00; } /* Green */
+              66% { color: #0000ff; } /* Blue */
+              100% { color: #ff0000; } /* Red again */
+            }
+
+            .rgbEffect {
+              animation: rgbTextEffect 3s infinite linear;
+            }
+          `}
+			</style>
+
+			<h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-none">
+				<span className="rgbEffect">M</span>
+				<span className="rgbEffect">o</span>
+				<span className="rgbEffect">d</span>
+				<span className="rgbEffect">e</span>
+				<span className="rgbEffect">r</span>
+				<span className="rgbEffect">n</span>
+				<span className="rgbEffect">P</span>
+				<span className="rgbEffect">r</span>
+				<span className="rgbEffect">i</span>
+				<span className="rgbEffect">m</span>
+				<span className="rgbEffect">u</span>
+				<span className="rgbEffect">l</span>
+				<span className="rgbEffect">a</span>
 			</h1>
 			<EditDatesForm />
 			<button
