@@ -23,29 +23,60 @@ const Welcome = () => {
 		<>
 			<div
 				key="1"
-				className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-center px-4">
+				className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-center px-4 w-full h-full">
 				<ToastContainer />
-				<h1 className="text-9xl font-bold tracking-tighter">
-					<span className="text-red-500">M</span>
-					<span className="text-yellow-500">o</span>
-					<span className="text-green-500">d</span>
-					<span className="text-blue-500">e</span>
-					<span className="text-indigo-500">r</span>
-					<span className="text-purple-500">n</span>
-					<span className="text-pink-500">P</span>
-					<span className="text-red-500">r</span>
-					<span className="text-yellow-500">i</span>
-					<span className="text-green-500">m</span>
-					<span className="text-blue-500">u</span>
-					<span className="text-indigo-500">l</span>
-					<span className="text-purple-500">a</span>
+
+				<style>
+					{`
+            @keyframes rgbTextEffect {
+              0% { color: #ff0000; } /* Red */
+              33% { color: #00ff00; } /* Green */
+              66% { color: #0000ff; } /* Blue */
+              100% { color: #ff0000; } /* Red again */
+            }
+
+            .rgbEffect {
+              animation: rgbTextEffect 10s infinite linear;
+            }
+          `}
+				</style>
+
+				<style>
+					{`
+                @keyframes rgbEffect {
+                  0% { background-color: #ff0000; } /* Red */
+                  33% { background-color: #00ff00; } /* Green */
+                  66% { background-color: #0000ff; } /* Blue */
+                  100% { background-color: #ff0000; } /* Red */
+                }
+                
+                .rgb-hover {
+                  animation: rgbEffect 3s infinite;
+                }
+              `}
+				</style>
+
+				<h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-none">
+					<span className="rgbEffect">M</span>
+					<span className="rgbEffect">o</span>
+					<span className="rgbEffect">d</span>
+					<span className="rgbEffect">e</span>
+					<span className="rgbEffect">r</span>
+					<span className="rgbEffect">n</span>
+					<span className="rgbEffect">P</span>
+					<span className="rgbEffect">r</span>
+					<span className="rgbEffect">i</span>
+					<span className="rgbEffect">m</span>
+					<span className="rgbEffect">u</span>
+					<span className="rgbEffect">l</span>
+					<span className="rgbEffect">a</span>
 				</h1>
-				<p className="text-2xl font-bold text-white tracking-tighter">
+				<p className="text-lg md:text-xl font-bold text-white tracking-tighter">
 					v{appVersion}
 				</p>
 
 				<button
-					className="mt-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+					className="mt-20 rgb-hover text-white font-bold py-2 px-4 rounded transition-colors duration-200 "
 					onClick={() => navigate('/home')}>
 					Proceed
 				</button>
