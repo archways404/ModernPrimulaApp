@@ -5,10 +5,23 @@ const { ipcRenderer } = window.require('electron');
 const Home = () => {
 	const [updateAvailable, setUpdateAvailable] = useState(false);
 	const [updateDownloaded, setUpdateDownloaded] = useState(false);
+	const [appVersion, setAppVersion] = useState('');
 
 	const navigate = useNavigate();
 
+	// Welcome.jsx
 	useEffect(() => {
+		const fetchVersion = async () => {
+			const version = __APP_VERSION__;
+			setAppVersion(version);
+		};
+
+		fetchVersion();
+	}, []);
+
+	useEffect(() => {
+		checkForUpdates();
+
 		ipcRenderer.on('update_available', () => {
 			console.log('update_available');
 			setUpdateAvailable(true);
@@ -67,14 +80,22 @@ const Home = () => {
 			</h1>
 			<div className="flex flex-col items-center space-y-4">
 				<div>
-					{updateAvailable && !updateDownloaded && (
-						<button onClick={downloadUpdate}>Download Update</button>
-					)}
-					{updateDownloaded && (
-						<button onClick={restartApp}>Restart to Install Update</button>
-					)}
-					{!updateAvailable && !updateDownloaded && (
-						<button onClick={checkForUpdates}>Check for Updates</button>
+					{updateAvailable ? (
+						!updateDownloaded ? (
+							<button
+								className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+								onClick={downloadUpdate}>
+								Download Update
+							</button>
+						) : (
+							<button
+								className="bg-green-500 text-white font-bold py-2 px-4 rounded"
+								onClick={restartApp}>
+								Restart to Install Update
+							</button>
+						)
+					) : (
+						<p className="text-green-500">Latest version v{appVersion}</p>
 					)}
 				</div>{' '}
 				<button

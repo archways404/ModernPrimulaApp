@@ -1,10 +1,24 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Welcome = () => {
 	let navigate = useNavigate();
+
+	const [appVersion, setAppVersion] = useState('');
+
+	// Welcome.jsx
+	useEffect(() => {
+		const fetchVersion = async () => {
+			const version = __APP_VERSION__;
+			setAppVersion(version);
+		};
+
+		fetchVersion();
+	}, []);
+
 	return (
 		<>
 			<div
@@ -26,6 +40,9 @@ const Welcome = () => {
 					<span className="text-indigo-500">l</span>
 					<span className="text-purple-500">a</span>
 				</h1>
+				<p className="text-2xl font-bold text-white tracking-tighter">
+					v{appVersion}
+				</p>
 
 				<button
 					className="mt-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"

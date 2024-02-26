@@ -23,13 +23,13 @@ const Editlogin = () => {
 		console.log('Username: ', formUsername, ' Password: ', formPassword);
 
 		// Send login details to the main process
-		ipcRenderer.send('start-verifyLoginDetails-task', {
+		ipcRenderer.send('start-verifyLoginDetails', {
 			username: formUsername,
 			password: formPassword,
 		});
 
 		// Listen for the completion of the login verification task
-		ipcRenderer.once('verifyLoginDetails-task-complete', (event, response) => {
+		ipcRenderer.once('verifyLoginDetails-complete', (event, response) => {
 			setShowLoading(false);
 			console.log('Response: ', response);
 			if (response.status === 'success') {
