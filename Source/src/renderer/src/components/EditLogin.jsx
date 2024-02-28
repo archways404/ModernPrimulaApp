@@ -66,7 +66,7 @@ const Editlogin = () => {
 	};
 
 	const handleLearnMoreClick = () => {
-		setIsModalOpen(true); 
+		setIsModalOpen(true);
 	};
 
 	return (
