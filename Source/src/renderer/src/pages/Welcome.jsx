@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Logo from '../components/Logo';
-import LatestV from '../components/LatestV';
+import CurrentVersion from '../components/CurrentVersion';
 import ToS from '../components/ToS';
 
 const Welcome = () => {
@@ -16,12 +16,12 @@ const Welcome = () => {
 				<ToastContainer />
 				<div className="space-y-4">
 					<Logo />
-					<LatestV />
+					<CurrentVersion />
 					<br></br>
 					<button
 						className="mt-20 rgb-hover text-white font-bold py-2 px-4 rounded transition-colors duration-300"
 						onClick={() => navigate('/home')}>
-						Proceed
+						Continue
 					</button>
 				</div>
 				<ToS />

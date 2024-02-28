@@ -1,6 +1,6 @@
 {
 	"name": "modernprimula",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "404 Company Not Found LLC",
 	"main": "./out/main/index.js",
 	"author": "archways404",
@@ -23,6 +23,7 @@
 	"dependencies": {
 		"@electron-toolkit/preload": "^2.0.0",
 		"@electron-toolkit/utils": "^2.0.0",
+		"@heroicons/react": "^2.1.1",
 		"cheerio": "^1.0.0-rc.12",
 		"dotenv": "^16.4.5",
 		"electron-updater": "^6.1.4",
@@ -32,6 +33,7 @@
 		"react-router": "^6.20.0",
 		"react-router-dom": "^6.20.0",
 		"react-toastify": "^9.1.3",
+		"tailwind-scrollbar-hide": "^1.1.7",
 		"toastify-js": "^1.12.0"
 	},
 	"devDependencies": {

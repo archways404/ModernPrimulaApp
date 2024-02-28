@@ -1,10 +1,10 @@
 const { ipcRenderer } = require('electron');
 import { useState, useEffect } from 'react';
 import { ColorRing } from 'react-loader-spinner';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Modal from './LearnMore';
+import Popup from './Popup';
 
 const Editlogin = () => {
 	const [formUsername, setFormUsername] = useState('');
@@ -71,7 +71,6 @@ const Editlogin = () => {
 
 	return (
 		<div className="flex flex-col items-center space-y-4">
-			<ToastContainer />
 			{showLoading ? (
 				<div className="loading-screen">
 					<ColorRing
@@ -102,8 +101,8 @@ const Editlogin = () => {
 						/>
 						<button
 							type="submit"
-							className="bg-green-500 text-white w-32 rounded-full">
-							Submit
+							className="rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400">
+							Change
 						</button>
 					</div>
 					<br></br>
@@ -125,7 +124,7 @@ const Editlogin = () => {
 					</div>
 				</form>
 			)}
-			<Modal
+			<Popup
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}>
 				<h2 className="font-semibold text-lg mb-4">Data Sharing Information</h2>
@@ -144,7 +143,7 @@ const Editlogin = () => {
 					use and not any personal information such as passwords or salary
 					information.
 				</p>
-			</Modal>
+			</Popup>
 		</div>
 	);
 };

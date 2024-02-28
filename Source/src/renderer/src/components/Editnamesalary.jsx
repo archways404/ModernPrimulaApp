@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const EditnameSalary = () => {
@@ -45,7 +45,6 @@ const EditnameSalary = () => {
 
 	return (
 		<div className="flex flex-col items-center space-y-4">
-			<ToastContainer />
 			{showLoading ? (
 				<div className="loading-screen">
 					<ColorRing
@@ -62,7 +61,7 @@ const EditnameSalary = () => {
 				<form onSubmit={handleSubmit}>
 					<div className="flex flex-col items-center space-y-4">
 						{' '}
-						<label className="text-white">Edit Information</label>
+						<label className="text-white">Change Information</label>
 						<input
 							className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
 							placeholder="Name"
@@ -79,8 +78,8 @@ const EditnameSalary = () => {
 						/>
 						<button
 							type="submit"
-							className="bg-green-500 text-white w-32 rounded-full">
-							Submit
+							className="rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400">
+							Change
 						</button>
 					</div>
 				</form>

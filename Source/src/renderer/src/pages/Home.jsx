@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const { ipcRenderer } = window.require('electron');
 
 import Logo from '../components/Logo';
-import LatestV from '../components/LatestV';
+import CurrentVersion from '../components/CurrentVersion';
 import ToS from '../components/ToS';
 
 const Home = () => {
@@ -55,62 +55,73 @@ const Home = () => {
 	};
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-center p-10">
-			<Logo />
-			<br></br>
-			{updateAvailable ? (
-				!updateDownloaded ? (
-					<button
-						className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
-						onClick={downloadUpdate}>
-						Download Update
-					</button>
-				) : (
-					<button
-						className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-2"
-						onClick={restartApp}>
-						Restart to Install Update
-					</button>
-				)
-			) : (
-				<LatestV />
+		<div className="flex flex-col items-center justify-between min-h-screen bg-gray-800 text-white px-4">
+			{/* Logo at the top with some margin below it */}
+			<div className="mt-10 mb-1">
+				<Logo />
+				<div className="text-center">
+					<CurrentVersion />
+				</div>
+			</div>
+
+			{/* Conditional rendering for the update buttons with adjusted margin */}
+			{updateAvailable && (
+				<div className="mb-5">
+					{!updateDownloaded ? (
+						<button
+							className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5"
+							onClick={downloadUpdate}>
+							Download Update
+						</button>
+					) : (
+						<button
+							className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-5"
+							onClick={restartApp}>
+							Restart to Install Update
+						</button>
+					)}
+				</div>
 			)}
-			<br></br>
-			<div className="flex flex-col items-center space-y-4">
+
+			{/* Buttons with increased margin and corrected classes */}
+			<div className="flex flex-col items-center space-y-4 mb-5">
 				<button
 					onClick={() => navigate('/automatic')}
-					className={`className="mt-20 rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
+					className={`rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
 						updateAvailable
 							? 'opacity-50 cursor-not-allowed'
-							: 'hover:rgb-background'
+							: 'hover:bg-gray-700'
 					}`}
 					disabled={updateAvailable}>
-					<span
-						className={`rgb-text ${updateAvailable ? '' : 'hover:rgb-text'}`}>
-						Automatic
-					</span>
+					Automatic
 				</button>
 
 				<button
 					onClick={() => navigate('/manual')}
-					className={`className="mt-20 rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
+					className={`mt-20 rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
 						updateAvailable
 							? 'opacity-50 cursor-not-allowed'
-							: 'hover:rgb-background'
+							: 'hover:bg-gray-700'
 					}`}
 					disabled={updateAvailable}>
 					Manual
 				</button>
+
 				<button
 					onClick={() => navigate('/settings')}
-					className={`className="mt-20 rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
+					className={`mt-20 rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
 						updateAvailable
 							? 'opacity-50 cursor-not-allowed'
-							: 'hover:rgb-background'
+							: 'hover:bg-gray-700'
 					}`}
 					disabled={updateAvailable}>
 					Settings
 				</button>
+			</div>
+
+			{/* Terms of Service acting as a footer with additional margin */}
+			<div className="mt-10">
+				<ToS />
 			</div>
 		</div>
 	);
