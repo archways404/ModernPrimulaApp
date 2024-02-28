@@ -1,6 +1,8 @@
 import { useState } from 'react';
 const { ipcRenderer } = window.require('electron');
 
+import ArrowRight from '@heroicons/react/24/solid/ArrowLongRightIcon'; // Adjusted for Heroicons v2
+
 const UserCredentials = () => {
 	const [formUsername, setFormUsername] = useState('');
 	const [formPassword, setFormPassword] = useState('');
@@ -19,7 +21,7 @@ const UserCredentials = () => {
 		e.preventDefault(); // Prevent default form submission behavior
 		console.log(formUsername, formPassword);
 		try {
-			ipcRenderer.send('start-verifyLoginDetails-task', {
+			ipcRenderer.send('start-verifyLoginDetails', {
 				username: formUsername,
 				password: formPassword,
 			});
@@ -46,8 +48,8 @@ const UserCredentials = () => {
 				/>
 				<button
 					type="submit"
-					className="bg-green-500 text-white w-32 rounded-full">
-					Submit
+					className="flex pl-2 pt-1 pb-1 items-center justify-center hover:bg-gray-700 rgbEffect transition-colors duration-400">
+					<ArrowRight className="h-7 w-7 mr-2" />
 				</button>
 			</div>
 		</form>

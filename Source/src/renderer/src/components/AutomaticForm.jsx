@@ -28,28 +28,30 @@ const AutomaticForm = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<div className="flex flex-col items-center space-y-4">
-				{' '}
-				<input
-					className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
-					placeholder="Name"
-					type="text"
-					onChange={handleChangeName}
-				/>
-				<input
-					className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
-					placeholder="Salary"
-					type="text"
-					onChange={handleChangeSalary}
-				/>
-				<button
-					type="submit"
-					className="bg-green-500 text-white w-32 rounded-full">
-					Submit
-				</button>
-			</div>
-		</form>
+		<>
+			<form onSubmit={handleSubmit}>
+				<div className="flex flex-col items-center space-y-4">
+					{' '}
+					<input
+						className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
+						placeholder="Name"
+						type="text"
+						onChange={handleChangeName}
+					/>
+					<input
+						className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
+						placeholder="Salary"
+						type="text"
+						onChange={handleChangeSalary}
+					/>
+					<button
+						type="submit"
+						className="bg-green-500 text-white w-32 rounded-full">
+						Submit
+					</button>
+				</div>
+			</form>
+		</>
 	);
 };
 

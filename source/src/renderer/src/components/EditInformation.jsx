@@ -3,7 +3,7 @@ import { ColorRing } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const EditnameSalary = () => {
+const EditInformation = () => {
 	const storedName = localStorage.getItem('name');
 	const storedSalary = localStorage.getItem('salary');
 	const [formName, setFormName] = useState(storedName || '');
@@ -88,4 +88,4 @@ const EditnameSalary = () => {
 	);
 };
 
-export default EditnameSalary;
+export default EditInformation;

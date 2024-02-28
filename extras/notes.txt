@@ -1,0 +1,8 @@
+Currently on:
+
+
+Automatic.jsx
+
+UserCredentials partially done
+
+displayInputForm not started.
