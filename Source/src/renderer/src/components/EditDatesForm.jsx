@@ -7,6 +7,9 @@ import Logo from '../components/Logo';
 import CurrentVersion from '../components/CurrentVersion';
 import BtnHome from '../components/Buttons/btnHome';
 
+import BtnAdd from '@heroicons/react/24/solid/PlusIcon';
+import BtnSend from '@heroicons/react/24/solid/CheckIcon';
+
 const EditDatesForm = () => {
 	const [inputGroups, setInputGroups] = useState([]);
 	const [renderForm, setRenderForm] = useState(true);
@@ -281,6 +284,20 @@ const EditDatesForm = () => {
 					</div>
 					<div className="fixed top-4 left-4">
 						<BtnHome />
+						<div className="pt-10">
+							<button
+								className="flex pl-2 pt-1 pb-1 items-center justify-center hover:bg-gray-700 rgbEffect transition-colors duration-400"
+								onClick={handleAddEntry}>
+								<BtnAdd className="h-5 w-5 mr-2" />
+							</button>
+							<div className="pt-10">
+								<button
+									className="flex pl-2 pt-1 pb-1 items-center justify-center hover:bg-gray-700 rgbEffect transition-colors duration-400"
+									onClick={handleSubmit}>
+									<BtnSend className="h-5 w-5 mr-2" />
+								</button>
+							</div>
+						</div>
 					</div>
 				</>
 			)}
