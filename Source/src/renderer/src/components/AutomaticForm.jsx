@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import ArrowRight from '@heroicons/react/24/solid/ArrowLongRightIcon'; // Adjusted for Heroicons v2
+
 const AutomaticForm = () => {
 	const [formName, setFormName] = useState('');
 	const [formSalary, setFormSalary] = useState('');
@@ -28,28 +30,30 @@ const AutomaticForm = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<div className="flex flex-col items-center space-y-4">
-				{' '}
-				<input
-					className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
-					placeholder="Name"
-					type="text"
-					onChange={handleChangeName}
-				/>
-				<input
-					className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
-					placeholder="Salary"
-					type="text"
-					onChange={handleChangeSalary}
-				/>
-				<button
-					type="submit"
-					className="bg-green-500 text-white w-32 rounded-full">
-					Submit
-				</button>
-			</div>
-		</form>
+		<>
+			<form onSubmit={handleSubmit}>
+				<div className="flex flex-col items-center space-y-4">
+					{' '}
+					<input
+						className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
+						placeholder="Name"
+						type="text"
+						onChange={handleChangeName}
+					/>
+					<input
+						className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
+						placeholder="Salary"
+						type="text"
+						onChange={handleChangeSalary}
+					/>
+					<button
+						type="submit"
+						className="flex pl-2 pt-1 pb-1 items-center justify-center hover:bg-gray-700 rgbEffect transition-colors duration-400">
+						<ArrowRight className="h-7 w-7 mr-2" />
+					</button>
+				</div>
+			</form>
+		</>
 	);
 };
 

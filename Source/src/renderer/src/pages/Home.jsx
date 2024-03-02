@@ -2,22 +2,15 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 const { ipcRenderer } = window.require('electron');
 
+import Logo from '../components/Logo';
+import CurrentVersion from '../components/CurrentVersion';
+import ToS from '../components/ToS';
+
 const Home = () => {
 	const [updateAvailable, setUpdateAvailable] = useState(false);
 	const [updateDownloaded, setUpdateDownloaded] = useState(false);
-	const [appVersion, setAppVersion] = useState('');
 
 	const navigate = useNavigate();
-
-	// Welcome.jsx
-	useEffect(() => {
-		const fetchVersion = async () => {
-			const version = __APP_VERSION__;
-			setAppVersion(version);
-		};
-
-		fetchVersion();
-	}, []);
 
 	useEffect(() => {
 		checkForUpdates();
@@ -62,81 +55,73 @@ const Home = () => {
 	};
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-center p-10">
-			<style>
-				{`
-            @keyframes rgbTextEffect {
-              0% { color: #ff0000; } /* Red */
-              33% { color: #00ff00; } /* Green */
-              66% { color: #0000ff; } /* Blue */
-              100% { color: #ff0000; } /* Red again */
-            }
+		<div className="flex flex-col items-center justify-between min-h-screen bg-gray-800 text-white px-4">
+			{/* Logo at the top with some margin below it */}
+			<div className="mt-10 mb-1">
+				<Logo />
+				<div className="text-center">
+					<CurrentVersion />
+				</div>
+			</div>
 
-            .rgbEffect {
-              animation: rgbTextEffect 10s infinite linear;
-            }
-          `}
-			</style>
-
-			<h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-none">
-				<span className="rgbEffect">M</span>
-				<span className="rgbEffect">o</span>
-				<span className="rgbEffect">d</span>
-				<span className="rgbEffect">e</span>
-				<span className="rgbEffect">r</span>
-				<span className="rgbEffect">n</span>
-				<span className="rgbEffect">P</span>
-				<span className="rgbEffect">r</span>
-				<span className="rgbEffect">i</span>
-				<span className="rgbEffect">m</span>
-				<span className="rgbEffect">u</span>
-				<span className="rgbEffect">l</span>
-				<span className="rgbEffect">a</span>
-			</h1>
-			{updateAvailable ? (
-				!updateDownloaded ? (
-					<button
-						className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
-						onClick={downloadUpdate}>
-						Download Update
-					</button>
-				) : (
-					<button
-						className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-2"
-						onClick={restartApp}>
-						Restart to Install Update
-					</button>
-				)
-			) : (
-				<p className="text-green-500 font-semibold mb-2">
-					Latest version v{appVersion}
-				</p>
+			{/* Conditional rendering for the update buttons with adjusted margin */}
+			{updateAvailable && (
+				<div className="mb-5">
+					{!updateDownloaded ? (
+						<button
+							className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5"
+							onClick={downloadUpdate}>
+							Download Update
+						</button>
+					) : (
+						<button
+							className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-5"
+							onClick={restartApp}>
+							Restart to Install Update
+						</button>
+					)}
+				</div>
 			)}
-			<div className="flex flex-col items-center space-y-4">
+
+			{/* Buttons with increased margin and corrected classes */}
+			<div className="flex flex-col items-center space-y-4 mb-5">
 				<button
 					onClick={() => navigate('/automatic')}
-					className={`bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ${
-						updateAvailable ? 'opacity-50 cursor-not-allowed' : ''
+					className={`rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
+						updateAvailable
+							? 'opacity-50 cursor-not-allowed'
+							: 'hover:bg-gray-700'
 					}`}
 					disabled={updateAvailable}>
 					Automatic
 				</button>
+
 				<button
 					onClick={() => navigate('/manual')}
-					className={`bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full ${
-						updateAvailable ? 'opacity-50 cursor-not-allowed' : ''
+					className={`mt-20 rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
+						updateAvailable
+							? 'opacity-50 cursor-not-allowed'
+							: 'hover:bg-gray-700'
 					}`}
 					disabled={updateAvailable}>
 					Manual
 				</button>
+
 				<button
 					onClick={() => navigate('/settings')}
-					className={`bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full ${
-						updateAvailable ? 'opacity-50 cursor-not-allowed' : ''
+					className={`mt-20 rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 ${
+						updateAvailable
+							? 'opacity-50 cursor-not-allowed'
+							: 'hover:bg-gray-700'
 					}`}
 					disabled={updateAvailable}>
 					Settings
 				</button>
+			</div>
+
+			{/* Terms of Service acting as a footer with additional margin */}
+			<div className="mt-10">
+				<ToS />
 			</div>
 		</div>
 	);

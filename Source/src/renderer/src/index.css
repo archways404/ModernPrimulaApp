@@ -1,3 +1,35 @@
+/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes rgbTextEffect {
+  0% { color: #ff0000; } /* Red */
+  33% { color: #00ff00; } /* Green */
+  66% { color: #0000ff; } /* Blue */
+  100% { color: #ff0000; } /* Red again */
+}
+
+.rgbEffect {
+  animation: rgbTextEffect 10s infinite linear;
+}
+
+@keyframes rgbEffect {
+  0% { background-color: #ff0000; } /* Red */
+  33% { background-color: #00ff00; } /* Green */
+  66% { background-color: #0000ff; } /* Blue */
+  100% { background-color: #ff0000; } /* Red */
+}
+
+.rgb-hover {
+  animation: rgbEffect 3s infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}

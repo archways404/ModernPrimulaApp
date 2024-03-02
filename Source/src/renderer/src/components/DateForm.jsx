@@ -26,20 +26,6 @@ const DateForm = () => {
 						<h2 className="text-lg font-medium">Select Month</h2>
 					</div>
 					<div className="grid grid-cols-3 gap-4 p-4 bg-gray-800">
-						<style>
-							{`
-                @keyframes rgbEffect {
-                  0% { background-color: #ff0000; } /* Red */
-                  33% { background-color: #00ff00; } /* Green */
-                  66% { background-color: #0000ff; } /* Blue */
-                  100% { background-color: #ff0000; } /* Red */
-                }
-                
-                .rgb-hover:hover {
-                  animation: rgbEffect 3s infinite;
-                }
-              `}
-						</style>
 						<button
 							onClick={handleSubmit}
 							value="01"

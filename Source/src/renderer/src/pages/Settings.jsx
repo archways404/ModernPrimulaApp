@@ -1,36 +1,43 @@
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Editlogin from '../components/EditLogin';
-import EditNameSalary from '../components/Editnamesalary';
+import EditInformation from '../components/EditInformation';
+
+import Logo from '../components/Logo';
+import CurrentVersion from '../components/CurrentVersion';
+import BtnHome from '../components/Buttons/btnHome';
 
 const Settings = () => {
-	const navigate = useNavigate();
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-center pt-20 pr-10 pl-20">
-			<h1 className="text-6xl font-bold tracking-tighter mb-10">
-				<span className="text-red-500">M</span>
-				<span className="text-yellow-500">o</span>
-				<span className="text-green-500">d</span>
-				<span className="text-blue-500">e</span>
-				<span className="text-indigo-500">r</span>
-				<span className="text-purple-500">n</span>
-				<span className="text-pink-500">P</span>
-				<span className="text-red-500">r</span>
-				<span className="text-yellow-500">i</span>
-				<span className="text-green-500">m</span>
-				<span className="text-blue-500">u</span>
-				<span className="text-indigo-500">l</span>
-				<span className="text-purple-500">a</span>
-			</h1>
-			<button
-				onClick={() => navigate('/home')}
-				className="bg-green-500 text-black w-32 h-8 rounded-t-3xl">
-				Home
-			</button>
-			<div className="flex flex-col items-center space-y-4">
-				<Editlogin />
-				<br></br>
-				<EditNameSalary />
+		<div className="flex flex-col items-center min-h-screen bg-gray-800 text-white px-4">
+			<div className="mt-10 mb-2">
+				{' '}
+				{/* Reduce bottom margin */}
+				<Logo />
+				<div className="text-center mb-2 mt-2">
+					{' '}
+					{/* Adjusted margins */}
+					<CurrentVersion />
+				</div>
+			</div>
+
+			<ToastContainer />
+
+			{/* Flex container for side-by-side layout with reduced padding if necessary */}
+			<div className="flex w-full justify-between px-4 mt-2">
+				{' '}
+				{/* Added top margin to pull closer */}
+				<div className="w-1/2 p-2">
+					<Editlogin />
+				</div>
+				<div className="w-1/2 p-2">
+					<EditInformation />
+				</div>
+			</div>
+
+			<div className="fixed top-4 left-4">
+				<BtnHome />
 			</div>
 		</div>
 	);

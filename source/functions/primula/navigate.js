@@ -43,6 +43,9 @@ async function primulaNavigate(newPage) {
 	await newPage.waitForNetworkIdle();
 	const [response_emp_id] = await Promise.all([
 		newPage.waitForNavigation(),
+		await newPage.waitForSelector(
+			'xpath=//html/body/div/div[2]/div[5]/div/div[2]/form/table/tbody/tr/td/table/tbody/tr[2]/td[1]/select'
+		),
 		newPage.select(
 			'xpath=//html/body/div/div[2]/div[5]/div/div[2]/form/table/tbody/tr/td/table/tbody/tr[2]/td[1]/select',
 			'Timersättning (dagrapport)'

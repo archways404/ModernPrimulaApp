@@ -3,6 +3,11 @@ import { ColorRing } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 const { ipcRenderer } = window.require('electron');
 
+import BtnHome from '../components/Buttons/btnHome';
+
+import BtnAdd from '@heroicons/react/24/solid/PlusIcon';
+import BtnSend from '@heroicons/react/24/solid/CheckIcon';
+
 const EditDatesForm = () => {
 	const [inputGroups, setInputGroups] = useState([]);
 	const [renderForm, setRenderForm] = useState(true);
@@ -162,7 +167,7 @@ const EditDatesForm = () => {
 	}, []);
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen">
+		<div className="flex flex-col items-center justify-center min-h-screen scrollbar-hide">
 			{showLoading ? (
 				<div className="loading-screen">
 					<ColorRing
@@ -179,48 +184,42 @@ const EditDatesForm = () => {
 				<>
 					{renderForm && (
 						<>
-							<div>
+							<div className="flex flex-wrap -mx-2 overflow-hidden scrollbar-hide">
 								{inputGroups.map((group, index) => (
 									<div
 										key={index}
-										className="flex items-center space-x-4 mb-4">
-										<label className="text-gray-200">Date</label>
-										<input
-											type="text"
-											className="w-24 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
-											value={group.Date}
-											onChange={(e) =>
-												handleInputChange(index, 'Date', e.target.value)
-											}
-										/>
-										<label className="text-gray-200">Hours</label>
-										<input
-											type="text"
-											className="w-24 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
-											value={group.Hours}
-											onChange={(e) =>
-												handleInputChange(index, 'Hours', e.target.value)
-											}
-										/>
-										<button
-											className="bg-red-500 text-white w-24 h-12 rounded-full"
-											onClick={() => handleDelete(index)}>
-											Delete
-										</button>
+										className="p-2 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
+										<div className="flex items-center justify-between space-x-3 mb-2 bg-gray-900 p-3 rounded-lg">
+											<div className="flex-1 min-w-0">
+												<label className="text-gray-200 text-sm">Date</label>
+												<input
+													type="text"
+													className="w-full h-10 px-3 text-sm rounded-md bg-gray-800 text-gray-200"
+													value={group.Date}
+													onChange={(e) =>
+														handleInputChange(index, 'Date', e.target.value)
+													}
+												/>
+											</div>
+											<div className="flex-1 min-w-0">
+												<label className="text-gray-200 text-sm">Hours</label>
+												<input
+													type="text"
+													className="w-full h-10 px-3 text-sm rounded-md bg-gray-800 text-gray-200"
+													value={group.Hours}
+													onChange={(e) =>
+														handleInputChange(index, 'Hours', e.target.value)
+													}
+												/>
+											</div>
+											<button
+												className="hover:bg-red-700 bg-red-500 hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400"
+												onClick={() => handleDelete(index)}>
+												Delete
+											</button>
+										</div>
 									</div>
 								))}
-							</div>
-							<div>
-								<button
-									className="bg-green-500 text-white w-24 h-12 rounded-full my-4"
-									onClick={handleSubmit}>
-									Submit
-								</button>
-								<button
-									className="bg-blue-500 text-white w-24 h-12 rounded-full my-4"
-									onClick={handleAddEntry}>
-									Add Entry
-								</button>
 							</div>
 						</>
 					)}
@@ -267,6 +266,23 @@ const EditDatesForm = () => {
 								<p>{resValues}</p>
 							</div>
 						)}
+					</div>
+					<div className="fixed top-4 left-4">
+						<BtnHome />
+						<div className="pt-10">
+							<button
+								className="flex pl-2 pt-1 pb-1 items-center justify-center hover:bg-gray-700 rgbEffect transition-colors duration-400"
+								onClick={handleAddEntry}>
+								<BtnAdd className="h-5 w-5 mr-2" />
+							</button>
+							<div className="pt-10">
+								<button
+									className="flex pl-2 pt-1 pb-1 items-center justify-center hover:bg-gray-700 rgbEffect transition-colors duration-400"
+									onClick={handleSubmit}>
+									<BtnSend className="h-5 w-5 mr-2" />
+								</button>
+							</div>
+						</div>
 					</div>
 				</>
 			)}

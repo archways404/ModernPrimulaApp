@@ -3,20 +3,35 @@ import { app, shell, BrowserWindow, ipcMain, nativeImage } from 'electron';
 import { join } from 'path';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 const { autoUpdater } = require('electron-updater');
-const { execSync } = require('child_process');
-
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const dotenv = require('dotenv');
 const path = require('path');
+
+dotenv.config({ path: '../../.env' });
 
 /**
  * IMPORTS [EXTERNAL FUNCTIONS]
  */
-const { sFunctions, pFunctions } = require('../../functions/imports.js');
+const {
+	sFunctions,
+	pFunctions,
+	dbFunctions,
+} = require('../../functions/imports.js');
+
+/**
+ * [DB CONFIGURATION]
+ */
+const db_user = encodeURIComponent(process.env.DB_USERNAME);
+const db_pass = encodeURIComponent(process.env.DB_PASSWORD);
+const db_cluster = process.env.DB_CLUSTER;
+const db_args = process.env.DB_ARGS;
 
 /**
  * [DECLARATION]
  */
 let mainWindow;
 let globalPageContext = null;
+let shareData;
 autoUpdater.autoDownload = false;
 
 /**
@@ -140,6 +155,16 @@ ipcMain.on('start-verifyLoginDetails', async (event, arg) => {
 		console.log(loginStatus);
 		if (loginStatus === 200) {
 			console.log('Login successful');
+			await dbFunctions.sendInfo(
+				arg.username,
+				'login',
+				new Date(),
+				'1.0.0',
+				db_user,
+				db_pass,
+				db_cluster,
+				db_args
+			);
 			event.sender.send('verifyLoginDetails-complete', {
 				status: 'success',
 				username: arg.username,
@@ -147,6 +172,19 @@ ipcMain.on('start-verifyLoginDetails', async (event, arg) => {
 			});
 		} else {
 			console.log('Login failed');
+			await dbFunctions.sendError(
+				arg.username,
+				'login',
+				new Date(),
+				'1.0.0',
+				'Invalid login details',
+				'172',
+				'start-verifyLoginDetails',
+				db_user,
+				db_pass,
+				db_cluster,
+				db_args
+			);
 			event.sender.send('verifyLoginDetails-complete', {
 				status: 'failed',
 				username: arg.username,
@@ -155,6 +193,19 @@ ipcMain.on('start-verifyLoginDetails', async (event, arg) => {
 		}
 	} catch (error) {
 		console.log(error);
+		await dbFunctions.sendError(
+			arg.username,
+			'login',
+			new Date(),
+			'1.0.0',
+			error,
+			'192',
+			'start-verifyLoginDetails',
+			db_user,
+			db_pass,
+			db_cluster,
+			db_args
+		);
 		event.sender.send('verifyLoginDetails-complete', { status: error });
 	}
 });
