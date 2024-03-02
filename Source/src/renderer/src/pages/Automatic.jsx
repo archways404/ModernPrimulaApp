@@ -63,7 +63,9 @@ const Automatic = () => {
 						<UserCredentials />
 					</div>
 				) : displayInputForm ? (
-					<AutomaticForm />
+					<div className="pt-20">
+						<AutomaticForm />
+					</div>
 				) : (
 					<DateForm />
 				)}

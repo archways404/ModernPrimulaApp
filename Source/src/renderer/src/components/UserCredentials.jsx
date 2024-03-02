@@ -36,7 +36,7 @@ const UserCredentials = () => {
 				{' '}
 				<input
 					className="w-64 h-12 px-4 rounded-md bg-gray-900 text-gray-200"
-					placeholder="Username"
+					placeholder="Computer ID"
 					type="text"
 					onChange={handleChangeUsername}
 				/>

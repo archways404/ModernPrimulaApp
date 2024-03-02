@@ -5,6 +5,10 @@ const { ipcRenderer } = window.require('electron');
 
 import EditDatesForm from '../components/EditDatesForm';
 
+import Logo from '../components/Logo';
+import CurrentVersion from '../components/CurrentVersion';
+import BtnHome from '../components/Buttons/btnHome';
+
 const Primulafunction = () => {
 	const navigate = useNavigate();
 	useEffect(() => {
@@ -20,44 +24,23 @@ const Primulafunction = () => {
 	}, []);
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-center pt-20 pr-10 pl-20">
-			<style>
-				{`
-            @keyframes rgbTextEffect {
-              0% { color: #ff0000; } /* Red */
-              33% { color: #00ff00; } /* Green */
-              66% { color: #0000ff; } /* Blue */
-              100% { color: #ff0000; } /* Red again */
-            }
-
-            .rgbEffect {
-              animation: rgbTextEffect 3s infinite linear;
-            }
-          `}
-			</style>
-
-			<h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-none">
-				<span className="rgbEffect">M</span>
-				<span className="rgbEffect">o</span>
-				<span className="rgbEffect">d</span>
-				<span className="rgbEffect">e</span>
-				<span className="rgbEffect">r</span>
-				<span className="rgbEffect">n</span>
-				<span className="rgbEffect">P</span>
-				<span className="rgbEffect">r</span>
-				<span className="rgbEffect">i</span>
-				<span className="rgbEffect">m</span>
-				<span className="rgbEffect">u</span>
-				<span className="rgbEffect">l</span>
-				<span className="rgbEffect">a</span>
-			</h1>
-			<EditDatesForm />
-			<button
-				onClick={() => navigate('/home')}
-				className="bg-green-500 text-black w-32 h-8 rounded-t-3xl">
-				Home
-			</button>
-		</div>
+		<>
+			<div className="flex flex-col items-center min-h-screen bg-gray-800 text-white px-4">
+				<div className="mt-10 mb-2">
+					{' '}
+					{/* Reduce bottom margin */}
+					<Logo />
+					<div className="text-center mb-2 mt-2">
+						{' '}
+						{/* Adjusted margins */}
+						<CurrentVersion />
+					</div>
+				</div>
+				<div className="pl-16 pr-16 scrollbar-hide">
+					<EditDatesForm />
+				</div>
+			</div>
+		</>
 	);
 };
 
