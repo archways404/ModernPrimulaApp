@@ -26,7 +26,7 @@ const puppeteer = require('puppeteer');
  */
 
 // headless: true or false
-const headless = true;
+const headless = false;
 
 // Declare variables
 let launchOptions;

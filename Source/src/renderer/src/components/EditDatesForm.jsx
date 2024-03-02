@@ -3,8 +3,6 @@ import { ColorRing } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 const { ipcRenderer } = window.require('electron');
 
-import Logo from '../components/Logo';
-import CurrentVersion from '../components/CurrentVersion';
 import BtnHome from '../components/Buttons/btnHome';
 
 import BtnAdd from '@heroicons/react/24/solid/PlusIcon';
@@ -222,19 +220,6 @@ const EditDatesForm = () => {
 										</div>
 									</div>
 								))}
-							</div>
-
-							<div>
-								<button
-									className="rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 mb-2 ml-2 mr-2"
-									onClick={handleSubmit}>
-									Submit
-								</button>
-								<button
-									className="rgb-hover hover:text-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-400 mb-2 ml-2 mr-2"
-									onClick={handleAddEntry}>
-									Add Entry
-								</button>
 							</div>
 						</>
 					)}

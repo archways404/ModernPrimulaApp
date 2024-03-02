@@ -7,10 +7,8 @@ import EditDatesForm from '../components/EditDatesForm';
 
 import Logo from '../components/Logo';
 import CurrentVersion from '../components/CurrentVersion';
-import BtnHome from '../components/Buttons/btnHome';
 
 const Primulafunction = () => {
-	const navigate = useNavigate();
 	useEffect(() => {
 		const name = localStorage.getItem('name');
 		const month = localStorage.getItem('month');
@@ -25,7 +23,7 @@ const Primulafunction = () => {
 
 	return (
 		<>
-			<div className="flex flex-col items-center min-h-screen bg-gray-800 text-white px-4">
+			<div className="flex flex-col items-center min-h-screen bg-gray-800 text-white px-4 scrollbar-hide">
 				<div className="mt-10 mb-2">
 					{' '}
 					{/* Reduce bottom margin */}
