@@ -13,31 +13,37 @@ async function sendInfo(
 	cluster,
 	args
 ) {
-	let uri = `mongodb+srv://${username}:${password}@${cluster}/?${args}`;
 
-	const client = new MongoClient(uri, {
-		serverApi: {
-			version: ServerApiVersion.v1,
-			strict: true,
-			deprecationErrors: true,
-		},
-	});
+  if ((!username, !password, !cluster, !args)) {
+		console.log('No database credentials found');
+		return;
+	} else {
+		let uri = `mongodb+srv://${username}:${password}@${cluster}/?${args}`;
 
-	try {
-		await client.connect();
-		const db = client.db('ModernPrimula-logs');
-		const infoCollection = db.collection('info');
+		const client = new MongoClient(uri, {
+			serverApi: {
+				version: ServerApiVersion.v1,
+				strict: true,
+				deprecationErrors: true,
+			},
+		});
 
-		const infoData = {
-			computerid: computerid,
-			usage: usage,
-			date: date,
-			version: version,
-		};
+		try {
+			await client.connect();
+			const db = client.db('ModernPrimula-logs');
+			const infoCollection = db.collection('info');
 
-		const infoResult = await infoCollection.insertOne(infoData);
-	} finally {
-		await client.close();
+			const infoData = {
+				computerid: computerid,
+				usage: usage,
+				date: date,
+				version: version,
+			};
+
+			const infoResult = await infoCollection.insertOne(infoData);
+		} finally {
+			await client.close();
+		}
 	}
 }
 
