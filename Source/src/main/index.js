@@ -317,7 +317,8 @@ ipcMain.on('EMP_data', async (event, clientData) => {
 			data,
 			advancedtableData
 		);
-		console.log('validFormDataTEST: ', validFormDataTEST);
+		console.log('tableData', tableData);
+		//console.log('validFormDataTEST: ', validFormDataTEST);
 		if (validFormDataTEST) {
 			console.log('success');
 			mainWindow.webContents.send('Results', tableData);
