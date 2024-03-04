@@ -204,3 +204,10 @@ console.log(
 	`Total Belopp for 4200 Sem.ers övriga: ${totalBeloppSemersOvriga.toFixed(2)}`
 );
 console.log(`Belopp to Pay: ${beloppToPay}`);
+
+// ACCOUNT FOR THEFT (TAXES)
+
+const tax = 0.7;
+
+const beloppToPayAfterTax = (beloppToPay * tax).toFixed(2);
+console.log(`Belopp to Pay (after tax): ${beloppToPayAfterTax}`);
