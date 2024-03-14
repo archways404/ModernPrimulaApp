@@ -43,29 +43,9 @@ const Home = () => {
 	return (
 		<div className="relative min-h-screen bg-zinc-900 text-white px-4">
 			{' '}
-			<div className="absolute top-0 left-0">
-				<div className="mx-4 my-4">
+			<div className="absolute top-0 left-2">
+				<div className=" mx-4 my-4">
 					<Logo />
-				</div>
-
-				{/* Buttons back and forward */}
-				<div className="mx-4 my-4">
-					<button
-						onClick={() => navigate('/')}
-						className="float-left text-white hover:text-green-500 p-2 ml-2">
-						<BackBTN className="h-6 w-6" />
-					</button>
-				</div>
-
-				<br />
-
-				{/* New ticket button */}
-				<div className="mx-4 my-4">
-					<button
-						onClick={() => navigate('/')}
-						className="float-left text-white hover:text-green-500 p-2 ml-2">
-						<NewTicketBTN className="h-6 w-6" />
-					</button>
 				</div>
 			</div>
 			{/* Absolute container for the settings button at the bottom right corner with some margin */}
@@ -76,9 +56,24 @@ const Home = () => {
 					<SettingsBTN className="h-6 w-6" />
 				</button>
 			</div>
-			{/* Terms of Service acting as a footer with additional margin */}
-			<div className="absolute bottom-0 mb-4">
-				<ToS />
+			<div className="absolute bottom-20 left-0 mb-4 mr-2">
+				<button
+					onClick={() => navigate('/')}
+					className="text-white hover:text-green-500 p-2 ml-2">
+					<NewTicketBTN className="h-6 w-6" />
+				</button>
+			</div>
+			<div className="absolute bottom-40 left-0 mb-4 mr-2">
+				<button
+					onClick={() => navigate('/')}
+					className="text-white hover:text-green-500 p-2 ml-2">
+					<BackBTN className="h-6 w-6" />
+				</button>
+			</div>
+			<div className="absolute bottom-0 left-0 right-0 mx-auto">
+				<div className="text-center">
+					<ToS />
+				</div>
 			</div>
 		</div>
 	);
@@ -87,6 +82,7 @@ const Home = () => {
 export default Home;
 
 /*
+
 
 <div className="flex flex-col items-center space-y-4">
   <button
