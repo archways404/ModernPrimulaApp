@@ -49,24 +49,24 @@ const Home = () => {
 				</div>
 			</div>
 			{/* Absolute container for the settings button at the bottom right corner with some margin */}
-			<div className="absolute bottom-0 left-0 mb-4 mr-2">
+			<div className="absolute bottom-6 left-0 mb-4 mr-2">
 				<button
 					onClick={() => navigate('/settings')}
-					className="float-left text-white hover:text-green-500 p-2 ml-2">
+					className="mt-8 text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
 					<SettingsBTN className="h-6 w-6" />
 				</button>
 			</div>
-			<div className="absolute bottom-20 left-0 mb-4 mr-2">
+			<div className="absolute bottom-28 left-0 mb-4 mr-2">
 				<button
 					onClick={() => navigate('/')}
-					className="text-white hover:text-green-500 p-2 ml-2">
+					className="mt-8 text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
 					<NewTicketBTN className="h-6 w-6" />
 				</button>
 			</div>
-			<div className="absolute bottom-40 left-0 mb-4 mr-2">
+			<div className="absolute bottom-48 left-0 mb-4 mr-2">
 				<button
 					onClick={() => navigate('/')}
-					className="text-white hover:text-green-500 p-2 ml-2">
+					className="mt-8 text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
 					<BackBTN className="h-6 w-6" />
 				</button>
 			</div>

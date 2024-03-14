@@ -6,6 +6,8 @@ import Logo from '../newComponents/Welcome/Logo';
 import CurrentVersion from '../newComponents/Welcome/CurrentVersion';
 import ToS from '../newComponents/Welcome/ToS';
 
+import WelcomeBTN from '@heroicons/react/24/solid/ArrowRightEndOnRectangleIcon';
+
 const Welcome = () => {
 	const [updateAvailable, setUpdateAvailable] = useState(false);
 	const [updateDownloaded, setUpdateDownloaded] = useState(false);
@@ -80,8 +82,9 @@ const Welcome = () => {
 						<>
 							<CurrentVersion />
 							<button
-								className="mt-8 bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-full transition ease-in-out duration-300"
+								className="mt-8 text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-55 hover:scale-110 transition ease-in-out duration-300"
 								onClick={() => navigate('/home')}>
+								<WelcomeBTN className="" />
 								Continue
 							</button>
 						</>
