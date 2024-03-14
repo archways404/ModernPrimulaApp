@@ -20,7 +20,9 @@ const LatestV = () => {
 
 	return (
 		<>
-			<p className="rgbEffect font-semibold text-xl">Current v{appVersion}</p>
+			<p className="text-white font-semibold text-xl">
+				<span className="rgbEffect font-semibold text-xl">v{appVersion}</span>
+			</p>
 		</>
 	);
 };
