@@ -2,12 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
-import Welcome from './pages/Welcome.jsx';
-import Home from './pages/Home.jsx';
+// PRODUCTION:
+//import Welcome from './pages/Welcome.jsx';
+//import Home from './pages/Home.jsx';
 import Automatic from './pages/Automatic.jsx';
 import Primulafunction from './pages/Primulafunction.jsx';
 import Settings from './pages/Settings.jsx';
 import Results from './pages/Results.jsx';
+
+// DEVELOPMENT:
+import Welcome from './newPages/Welcome.jsx';
+import Home from './newPages/Home.jsx';
+/*
+import Home from './newPages/Home.jsx';
+import Automatic from './newPages/Automatic.jsx';
+import Primulafunction from './newPages/Primulafunction.jsx';
+import Settings from './newPages/Settings.jsx';
+import Results from './newPages/Results.jsx';
+*/
 
 import './index.css';
 
