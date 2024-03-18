@@ -4,6 +4,7 @@ const { ipcRenderer } = window.require('electron');
 
 import Logo from '../newComponents/Home/Logo';
 import ToS from '../newComponents/Welcome/ToS';
+import CurrentVersion from '../newComponents/Home/CurrentVersion';
 
 import BackBTN from '@heroicons/react/24/solid/ArrowUturnLeftIcon';
 import NewTicketBTN from '@heroicons/react/24/solid/DocumentPlusIcon';
@@ -49,9 +50,11 @@ const Home = () => {
 			</div>
 
 			{/* Content container */}
-			<div className="flex flex-col justify-between h-full pt-16 pb-24 mx-10">
+			<div className="flex flex-col justify-between h-full pt-16 pb-24 mx-24">
 				<div className="px-4 mt-4">
-					<h1 className="text-xl font-bold">Welcome to ModernPrimula</h1>
+					<h1 className="text-xl font-bold">
+						Welcome to <span className="gradient-text">ModernPrimula</span>
+					</h1>
 					<p className="mt-2">
 						This is the summary text that gives users an insight into the
 						content of the page...
@@ -83,7 +86,7 @@ const Home = () => {
 			{/* New Ticket button with hover label */}
 			<div className="absolute group bottom-28 left-0 mb-4 mr-2">
 				<button
-					onClick={() => navigate('/')}
+					onClick={() => navigate('/NewTicket')}
 					className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
 					<NewTicketBTN className="h-6 w-6" />
 					{/* Hover label */}
@@ -114,7 +117,6 @@ const Home = () => {
 			</div>
 		</div>
 	);
-
 };
 
 export default Home;
