@@ -7,12 +7,12 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 //import Home from './pages/Home.jsx';
 import Automatic from './pages/Automatic.jsx';
 import Primulafunction from './pages/Primulafunction.jsx';
-import Settings from './pages/Settings.jsx';
 import Results from './pages/Results.jsx';
 
 // DEVELOPMENT:
 import Welcome from './newPages/Welcome.jsx';
 import Home from './newPages/Home.jsx';
+import Settings from './newPages/Settings.jsx';
 /*
 import Home from './newPages/Home.jsx';
 import Automatic from './newPages/Automatic.jsx';
