@@ -78,10 +78,10 @@ const TicketResult = () => {
 						<table className="max-w-md text-white">
 							<thead>
 								<tr>
-									<th className="p-1 bg-zinc-800 shadow-md">Löneart</th>
-									<th className="p-1 bg-zinc-800 shadow-md">Datum</th>
-									<th className="p-1 bg-zinc-800 shadow-md">Timmar</th>
-									<th className="p-1 bg-zinc-800 shadow-md">Pris</th>
+									<th className="p-1 bg-zinc-900 shadow-md">Type</th>
+									<th className="p-1 bg-zinc-900 shadow-md">Date</th>
+									<th className="p-1 bg-zinc-900 shadow-md">Hours</th>
+									<th className="p-1 bg-zinc-900 shadow-md">Price</th>
 								</tr>
 							</thead>
 							<tbody>
