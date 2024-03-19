@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 const { ipcRenderer } = window.require('electron');
 
-import Primula from '../newComponents/Primula';
+import Primula from '../newComponents/Primula/Primula';
 import Logo from '../newComponents/Ticket/Logo';
 import ToS from '../newComponents/Welcome/ToS';
 
