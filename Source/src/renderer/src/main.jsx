@@ -6,13 +6,15 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 //import Welcome from './pages/Welcome.jsx';
 //import Home from './pages/Home.jsx';
 import Automatic from './pages/Automatic.jsx';
-import Primulafunction from './pages/Primulafunction.jsx';
+//import Primulafunction from './pages/Primulafunction.jsx';
 import Results from './pages/Results.jsx';
 
 // DEVELOPMENT:
 import Welcome from './newPages/Welcome.jsx';
 import Home from './newPages/Home.jsx';
 import Settings from './newPages/Settings.jsx';
+import Ticket from './newPages/Ticket.jsx';
+import PrimulaFunction from './newPages/PrimulaFunction.jsx';
 /*
 import Home from './newPages/Home.jsx';
 import Automatic from './newPages/Automatic.jsx';
@@ -37,12 +39,12 @@ root.render(
 					element={<Home />}
 				/>
 				<Route
-					path="/automatic"
-					element={<Automatic />}
+					path="/Ticket"
+					element={<Ticket />}
 				/>
 				<Route
 					path="/primulafunction"
-					element={<Primulafunction />}
+					element={<PrimulaFunction />}
 				/>
 				<Route
 					path="/settings"

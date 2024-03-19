@@ -86,7 +86,7 @@ const Home = () => {
 			{/* New Ticket button with hover label */}
 			<div className="absolute group bottom-28 left-0 mb-4 mr-2">
 				<button
-					onClick={() => navigate('/NewTicket')}
+					onClick={() => navigate('/ticket')}
 					className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
 					<NewTicketBTN className="h-6 w-6" />
 					{/* Hover label */}
