@@ -188,66 +188,59 @@ const Primula = () => {
 				<>
 					<div className="flex flex-col h-screen">
 						{renderForm && (
-							<div className="overflow-auto">
-								<table className="min-w-full w-auto mx-auto">
-									<thead>
-										<tr>
-											<th className="text-xs font-medium text-gray-200 px-4 py-2 text-left w-1/6">
-												Date
-											</th>
-											<th className="text-xs font-medium text-gray-200 px-4 py-2 text-left w-1/4">
-												Hours
-											</th>
-											<th className="text-xs font-medium text-gray-200 px-4 py-2 text-left w-1/2">
-												Actions
-											</th>
-										</tr>
-									</thead>
-									<tbody>
-										{inputGroups.map((group, index) => (
-											<tr
-												key={index}
-												className="bg-zinc-900">
-												<td className="px-2 py-2 whitespace-nowrap text-xs text-gray-200 w-1/6">
-													<input
-														type="text"
-														className="h-8 px-2 text-xs rounded-md bg-zinc-900 text-gray-200 w-full"
-														value={group.Date}
-														onChange={(e) =>
-															handleInputChange(index, 'Date', e.target.value)
-														}
-													/>
-												</td>
-												<td className="px-4 py-2 whitespace-nowrap text-xs text-gray-200 w-1/4">
-													<input
-														type="text"
-														className="w-full h-8 px-2 text-xs rounded-md bg-zinc-900 text-gray-200"
-														value={group.Hours}
-														onChange={(e) =>
-															handleInputChange(index, 'Hours', e.target.value)
-														}
-													/>
-												</td>
-												<td className="px-4 py-2 whitespace-nowrap text-xs font-medium w-1/2">
-													<button
-														onClick={() => handleDelete(index)}
-														className="flex items-center text-white hover:text-green-500 font-bold p-1 ml-2 transform scale-100 hover:scale-110 transition ease-in-out duration-300">
-														<DeleteBTN className="h-4 w-4" />
-													</button>
-												</td>
-											</tr>
-										))}
-									</tbody>
-								</table>
+							<div className="overflow-auto h-full">
+								<div className="flex flex-wrap">
+									{/* Header for the first column */}
+									<div className="w-full md:w-1/2 p-1">
+										<div className="flex justify-between px-1 text-xs text-gray-200">
+											<span>Date</span>
+											<span>Hours</span>
+										</div>
+									</div>
+
+									{/* Header for the second column */}
+									<div className="hidden md:block md:w-1/2 p-1">
+										<div className="flex justify-between px-1 text-xs text-gray-200">
+											<span>Date</span>
+											<span>Hours</span>
+										</div>
+									</div>
+
+									{/* Input groups */}
+									{inputGroups.map((group, index) => (
+										<div
+											key={index}
+											className="w-full md:w-1/2 p-1">
+											<div className="bg-zinc-900 p-1 rounded-md mb-1 flex flex-col md:flex-row md:items-center md:justify-between">
+												<input
+													type="text"
+													placeholder="Date"
+													className="flex-1 h-8 px-1 text-xs rounded-md bg-zinc-900 text-gray-200 w-full"
+													value={group.Date}
+													onChange={(e) =>
+														handleInputChange(index, 'Date', e.target.value)
+													}
+												/>
+												<input
+													type="text"
+													placeholder="Hours"
+													className="flex-1 h-8 px-1 text-xs rounded-md bg-zinc-900 text-gray-200 w-full ml-2"
+													value={group.Hours}
+													onChange={(e) =>
+														handleInputChange(index, 'Hours', e.target.value)
+													}
+												/>
+												<button
+													onClick={() => handleDelete(index)}
+													className="text-white hover:text-green-500 font-bold py-1 px-2 rounded-md transition ease-in-out duration-300 ml-2">
+													<DeleteBTN className="h-4 w-4" />
+												</button>
+											</div>
+										</div>
+									))}
+								</div>
 							</div>
 						)}
-						<div className="mt-auto">
-							<button
-								className="hover:bg-green-700 bg-green-500 text-white font-bold py-2 px-4 rounded"
-								onClick={handleAddRow}>
-								Add New Row
-							</button>
-						</div>
 					</div>
 
 					<div>
