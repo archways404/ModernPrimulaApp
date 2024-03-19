@@ -44,16 +44,16 @@ root.render(
 					element={<Ticket />}
 				/>
 				<Route
+					path="/ticketresult"
+					element={<TicketResult />}
+				/>
+				<Route
 					path="/primulafunction"
 					element={<PrimulaFunction />}
 				/>
 				<Route
 					path="/settings"
 					element={<Settings />}
-				/>
-				<Route
-					path="/ticketresult"
-					element={<TicketResult />}
 				/>
 			</Routes>
 		</HashRouter>

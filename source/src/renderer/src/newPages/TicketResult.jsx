@@ -26,6 +26,36 @@ const TicketResult = () => {
 				setStoredData(results.summary); // Assuming `results` is appropriately structured
 				setStoredPretax(results.totalBelopp);
 				setStoredPosttax(results.afterTax);
+
+				const totalHours = results.summary.reduce((total, item) => {
+					// Replace comma with dot and then convert to number
+					const antalNumber = Number(item.Antal.replace(',', '.'));
+					if (isNaN(antalNumber)) {
+						console.error('Non-numeric Antal value found:', item.Antal);
+						return total; // Skip this item or handle it as needed
+					}
+					return total + antalNumber;
+				}, 0);
+
+				console.log('totalHours: ', totalHours);
+
+				// Try to retrieve and parse the 'totalHours' item from sessionStorage
+				const storedHoursString = localStorage.getItem('totalHours');
+				let currentHours;
+
+				if (storedHoursString) {
+					// If there's existing data, parse it as an array
+					currentHours = JSON.parse(storedHoursString);
+				} else {
+					// If no existing data, initialize currentHours as a new empty array
+					currentHours = [];
+				}
+
+				// Example of adding the new totalHours to the currentHours array
+				currentHours.push(totalHours);
+
+				// Store the updated array back into sessionStorage
+				localStorage.setItem('totalHours', JSON.stringify(currentHours));
 			} catch (error) {
 				console.error('Error parsing JSON from sessionStorage:', error);
 				// Handle error or set to a default value

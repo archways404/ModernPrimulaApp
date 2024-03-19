@@ -188,17 +188,19 @@ const Primula = () => {
 								<div className="flex flex-wrap">
 									{/* Header for the first column */}
 									<div className="w-full md:w-1/2 p-1">
-										<div className="flex justify-between px-1 text-xs text-gray-200">
+										<div className="flex justify-between px-1 text-xs text-gray-200 font-bold">
 											<span>Date</span>
 											<span>Hours</span>
+											<span> </span>
 										</div>
 									</div>
 
 									{/* Header for the second column */}
 									<div className="hidden md:block md:w-1/2 p-1">
-										<div className="flex justify-between px-1 text-xs text-gray-200">
+										<div className="flex justify-between px-1 text-xs text-gray-200 font-bold">
 											<span>Date</span>
 											<span>Hours</span>
+											<span> </span>
 										</div>
 									</div>
 
@@ -211,7 +213,9 @@ const Primula = () => {
 												<input
 													type="text"
 													placeholder="Date"
-													className="flex-1 h-8 px-1 text-xs rounded-md bg-zinc-900 text-gray-200 w-full"
+													className={`flex-1 h-8 px-1 text-xs rounded-md ${
+														group.Date ? 'bg-zinc-900' : 'bg-red-700'
+													} text-gray-200 w-full`}
 													value={group.Date}
 													onChange={(e) =>
 														handleInputChange(index, 'Date', e.target.value)
@@ -220,7 +224,9 @@ const Primula = () => {
 												<input
 													type="text"
 													placeholder="Hours"
-													className="flex-1 h-8 px-1 text-xs rounded-md bg-zinc-900 text-gray-200 w-full ml-2"
+													className={`flex-1 h-8 px-1 text-xs rounded-md ${
+														group.Hours ? 'bg-zinc-900' : 'bg-red-700'
+													} text-gray-200 w-full ml-2`}
 													value={group.Hours}
 													onChange={(e) =>
 														handleInputChange(index, 'Hours', e.target.value)
@@ -229,7 +235,7 @@ const Primula = () => {
 												<button
 													onClick={() => handleDelete(index)}
 													className="text-red-400 hover:text-red-700 font-bold py-1 px-2 rounded-md transition ease-in-out duration-300 ml-2">
-													<DeleteBTN className="h-4 w-4" />
+													<DeleteBTN className="h-5 w-5" />
 												</button>
 											</div>
 										</div>
