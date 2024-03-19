@@ -258,17 +258,26 @@ ipcMain.on('EMP_data', async (event, clientData) => {
 	try {
 		const logicData = await pFunctions.getSummary(newPage);
 		const tableData = logicData.tableData;
+		const summary = logicData.summaryData;
+		const totalBelopp = logicData.totalBelopp;
+		const afterTax = logicData.afterTax;
 		const verifyInputData = logicData.verifyInputData;
 		const advancedtableData = logicData.advancedtableData;
 		const validFormDataTEST = await pFunctions.verifyData(
 			data,
 			advancedtableData
 		);
+		const res = {
+			summary: summary,
+			totalBelopp: totalBelopp,
+			afterTax: afterTax,
+		};
+
 		console.log('tableData', tableData);
 		//console.log('validFormDataTEST: ', validFormDataTEST);
 		if (validFormDataTEST) {
 			console.log('success');
-			mainWindow.webContents.send('Results', tableData);
+			mainWindow.webContents.send('Results', res);
 		}
 	} catch (error) {
 		console.log(error);
