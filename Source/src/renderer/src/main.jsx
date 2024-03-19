@@ -15,6 +15,7 @@ import Home from './newPages/Home.jsx';
 import Settings from './newPages/Settings.jsx';
 import Ticket from './newPages/Ticket.jsx';
 import PrimulaFunction from './newPages/PrimulaFunction.jsx';
+import TicketResult from './newPages/TicketResult.jsx';
 /*
 import Home from './newPages/Home.jsx';
 import Automatic from './newPages/Automatic.jsx';
@@ -39,7 +40,7 @@ root.render(
 					element={<Home />}
 				/>
 				<Route
-					path="/Ticket"
+					path="/ticket"
 					element={<Ticket />}
 				/>
 				<Route
@@ -51,8 +52,8 @@ root.render(
 					element={<Settings />}
 				/>
 				<Route
-					path="/results"
-					element={<Results />}
+					path="/ticketresult"
+					element={<TicketResult />}
 				/>
 			</Routes>
 		</HashRouter>

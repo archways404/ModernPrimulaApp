@@ -5,10 +5,7 @@ const { ipcRenderer } = window.require('electron');
 
 import AddBTN from '@heroicons/react/24/solid/PlusIcon';
 import SendBTN from '@heroicons/react/24/solid/CheckIcon';
-
 import BackBTN from '@heroicons/react/24/solid/ArrowUturnLeftIcon';
-import NewTicketBTN from '@heroicons/react/24/solid/DocumentPlusIcon';
-import SettingsBTN from '@heroicons/react/24/solid/Cog6ToothIcon';
 import DeleteBTN from '@heroicons/react/24/solid/TrashIcon';
 
 const Primula = () => {
@@ -157,7 +154,7 @@ const Primula = () => {
 			sessionStorage.setItem('result', JSON.stringify(data));
 			setResValues(data);
 			setShowLoading(false);
-			navigate('/results');
+			navigate('/ticketresult');
 		};
 
 		// Set up the event listener
@@ -231,7 +228,7 @@ const Primula = () => {
 												/>
 												<button
 													onClick={() => handleDelete(index)}
-													className="text-white hover:text-green-500 font-bold py-1 px-2 rounded-md transition ease-in-out duration-300 ml-2">
+													className="text-red-400 hover:text-red-700 font-bold py-1 px-2 rounded-md transition ease-in-out duration-300 ml-2">
 													<DeleteBTN className="h-4 w-4" />
 												</button>
 											</div>
@@ -287,6 +284,18 @@ const Primula = () => {
 									<h1 className="text-white text-4xl font-bold tracking-tighter mb-10">
 										{mfaCode}
 									</h1>
+									{/* Back button with hover label */}
+									<div className="absolute group bottom-48 left-0 mb-4 mr-2">
+										<button
+											onClick={() => navigate('/home')}
+											className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+											<BackBTN className="h-6 w-6" />
+											{/* Hover label */}
+											<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
+												Go Back
+											</span>
+										</button>
+									</div>
 								</div>
 							)}
 							{renderEMP && (
@@ -314,25 +323,37 @@ const Primula = () => {
 										onClick={EMPhandleSubmit}>
 										Select
 									</button>
+									{/* Back button with hover label */}
+									<div className="absolute group bottom-48 left-0 mb-4 mr-2">
+										<button
+											onClick={() => navigate('/home')}
+											className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+											<BackBTN className="h-6 w-6" />
+											{/* Hover label */}
+											<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
+												Go Back
+											</span>
+										</button>
+									</div>
 								</div>
 							)}
 							{renderResult && (
 								<div>
 									<p>{resValues}</p>
+									{/* Back button with hover label */}
+									<div className="absolute group bottom-48 left-0 mb-4 mr-2">
+										<button
+											onClick={() => navigate('/home')}
+											className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+											<BackBTN className="h-6 w-6" />
+											{/* Hover label */}
+											<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
+												Go Back
+											</span>
+										</button>
+									</div>
 								</div>
 							)}
-						</div>
-						{/* Back button with hover label */}
-						<div className="absolute group bottom-48 left-0 mb-4 mr-2">
-							<button
-								onClick={() => navigate('/home')}
-								className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
-								<BackBTN className="h-6 w-6" />
-								{/* Hover label */}
-								<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
-									Go Back
-								</span>
-							</button>
 						</div>
 					</div>
 				</>

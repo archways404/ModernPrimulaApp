@@ -59,6 +59,15 @@ const Home = () => {
 						This is the summary text that gives users an insight into the
 						content of the page...
 					</p>
+					<button
+						onClick={() => navigate('/ticketresult')}
+						className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+						<BackBTN className="h-6 w-6" />
+						{/* Hover label */}
+						<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
+							Test Ticket Result
+						</span>
+					</button>
 				</div>
 
 				<div className="px-4 mt-4">

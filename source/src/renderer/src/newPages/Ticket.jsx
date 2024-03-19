@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 const { ipcRenderer } = window.require('electron');
 
+// Components
 import Logo from '../newComponents/Ticket/Logo';
 import ToS from '../newComponents/Welcome/ToS';
-
 import SetupCredentials from '../newComponents/Ticket/SetupCredentials';
 import SetupInformation from '../newComponents/Ticket/SetupInformation';
 import DatePicker from '../newComponents/Ticket/DatePicker';
 
+// Buttons
 import BackBTN from '@heroicons/react/24/solid/ArrowUturnLeftIcon';
 import NewTicketBTN from '@heroicons/react/24/solid/DocumentPlusIcon';
 import SettingsBTN from '@heroicons/react/24/solid/Cog6ToothIcon';
