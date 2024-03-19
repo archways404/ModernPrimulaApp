@@ -21,7 +21,7 @@ const PrimulaFunction = () => {
 
 	return (
 		<>
-			<div className="relative min-h-screen bg-zinc-900 text-white px-4">
+			<div className="relative max-h-screen bg-zinc-900 text-white px-4">
 				<div className="absolute top-0 left-2">
 					<div className="mx-4 my-4">
 						<Logo />
@@ -29,9 +29,9 @@ const PrimulaFunction = () => {
 				</div>
 
 				{/* Content container */}
-				<div className="flex flex-col justify-between h-full pt-16 pb-24 mx-24">
-					<div className="flex flex-col items-center min-h-screen bg-zinc-900 text-white px-4 scrollbar-hide">
-						<div className="pl-16 pr-16 scrollbar-hide">
+				<div className="mx-24">
+					<div className="flex flex-col items-center bg-zinc-900 text-white px-4 scrollbar-hide">
+						<div className="pl-14 pr-14 scrollbar-hide">
 							<Primula />
 						</div>
 					</div>

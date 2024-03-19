@@ -3,9 +3,8 @@ import { ColorRing } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 const { ipcRenderer } = window.require('electron');
 
-import BtnHome from '../components/Buttons/btnHome';
-import BtnAdd from '@heroicons/react/24/solid/PlusIcon';
-import BtnSend from '@heroicons/react/24/solid/CheckIcon';
+import AddBTN from '@heroicons/react/24/solid/PlusIcon';
+import SendBTN from '@heroicons/react/24/solid/CheckIcon';
 
 import BackBTN from '@heroicons/react/24/solid/ArrowUturnLeftIcon';
 import NewTicketBTN from '@heroicons/react/24/solid/DocumentPlusIcon';
@@ -186,7 +185,7 @@ const Primula = () => {
 				</div>
 			) : (
 				<>
-					<div className="flex flex-col h-screen">
+					<div className="flex flex-col h-screen pt-20">
 						{renderForm && (
 							<div className="overflow-auto h-full">
 								<div className="flex flex-wrap">
@@ -241,51 +240,50 @@ const Primula = () => {
 								</div>
 							</div>
 						)}
-					</div>
-
-					<div>
-						{renderMFA && (
-							<div>
-								<h1 className="text-white text-2xl font-bold tracking-tighter mb-10">
-									MFA
-								</h1>
-								<h1 className="text-white text-4xl font-bold tracking-tighter mb-10">
-									{mfaCode}
-								</h1>
-							</div>
-						)}
-						{renderEMP && (
-							<div>
-								<select
-									className="w-64 h-12 px-4 rounded-md bg-zinc-900 text-gray-200"
-									value={empSelected}
-									onChange={handleEmpSelectionChange}>
-									<option
-										selected
-										value=""
-										disabled>
-										Select option
-									</option>
-									{empOptions.map((option) => (
+						<div>
+							{renderMFA && (
+								<div>
+									<h1 className="text-white text-2xl font-bold tracking-tighter mb-10">
+										MFA
+									</h1>
+									<h1 className="text-white text-4xl font-bold tracking-tighter mb-10">
+										{mfaCode}
+									</h1>
+								</div>
+							)}
+							{renderEMP && (
+								<div>
+									<select
+										className="w-64 h-12 px-4 rounded-md bg-zinc-900 text-gray-200"
+										value={empSelected}
+										onChange={handleEmpSelectionChange}>
 										<option
-											key={option.value}
-											value={option.value}>
-											{option.displayText}
+											selected
+											value=""
+											disabled>
+											Select option
 										</option>
-									))}
-								</select>
-								<button
-									className="bg-green-500 text-white w-24 h-12 rounded-full my-4"
-									onClick={EMPhandleSubmit}>
-									Select
-								</button>
-							</div>
-						)}
-						{renderResult && (
-							<div>
-								<p>{resValues}</p>
-							</div>
-						)}
+										{empOptions.map((option) => (
+											<option
+												key={option.value}
+												value={option.value}>
+												{option.displayText}
+											</option>
+										))}
+									</select>
+									<button
+										className="bg-green-500 text-white w-24 h-12 rounded-full my-4"
+										onClick={EMPhandleSubmit}>
+										Select
+									</button>
+								</div>
+							)}
+							{renderResult && (
+								<div>
+									<p>{resValues}</p>
+								</div>
+							)}
+						</div>
 					</div>
 
 					{/* Back button with hover label */}
@@ -301,48 +299,30 @@ const Primula = () => {
 						</button>
 					</div>
 
-					{/* New Ticket button with hover label */}
+					{/* New row button with hover label */}
 					<div className="absolute group bottom-28 left-0 mb-4 mr-2">
 						<button
-							onClick={() => navigate('/NewTicket')}
+							onClick={handleAddRow}
 							className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
-							<NewTicketBTN className="h-6 w-6" />
+							<AddBTN className="h-6 w-6" />
 							{/* Hover label */}
 							<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
-								Create a ticket
+								New row
 							</span>
 						</button>
 					</div>
 
-					{/* Settings button with hover label */}
+					{/* Submit ticket button with hover label */}
 					<div className="absolute group bottom-6 left-0 mb-4 mr-2">
 						<button
-							onClick={() => navigate('/settings')}
+							onClick={handleSubmit}
 							className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
-							<SettingsBTN className="h-6 w-6" />
+							<SendBTN className="h-6 w-6" />
 							{/* Hover label */}
 							<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
-								Settings
+								Submit Ticket
 							</span>
 						</button>
-					</div>
-
-					<div className="fixed top-4 left-4">
-						<BtnHome />
-						<div className="pt-10">
-							<button
-								className="flex pl-2 pt-1 pb-1 items-center justify-center hover:bg-zinc-900 rgbEffect transition-colors duration-400"
-								onClick={handleAddRow}>
-								<BtnAdd className="h-5 w-5 mr-2" />
-							</button>
-							<div className="pt-10">
-								<button
-									className="flex pl-2 pt-1 pb-1 items-center justify-center hover:bg-zinc-900 rgbEffect transition-colors duration-400"
-									onClick={handleSubmit}>
-									<BtnSend className="h-5 w-5 mr-2" />
-								</button>
-							</div>
-						</div>
 					</div>
 				</>
 			)}
