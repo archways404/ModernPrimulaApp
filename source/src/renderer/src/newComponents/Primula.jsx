@@ -238,6 +238,44 @@ const Primula = () => {
 										</div>
 									))}
 								</div>
+								{/* Back button with hover label */}
+								<div className="absolute group bottom-48 left-0 mb-4 mr-2">
+									<button
+										onClick={() => navigate('/home')}
+										className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+										<BackBTN className="h-6 w-6" />
+										{/* Hover label */}
+										<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
+											Go Back
+										</span>
+									</button>
+								</div>
+
+								{/* New row button with hover label */}
+								<div className="absolute group bottom-28 left-0 mb-4 mr-2">
+									<button
+										onClick={handleAddRow}
+										className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+										<AddBTN className="h-6 w-6" />
+										{/* Hover label */}
+										<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
+											New row
+										</span>
+									</button>
+								</div>
+
+								{/* Submit ticket button with hover label */}
+								<div className="absolute group bottom-6 left-0 mb-4 mr-2">
+									<button
+										onClick={handleSubmit}
+										className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+										<SendBTN className="h-6 w-6" />
+										{/* Hover label */}
+										<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
+											Submit Ticket
+										</span>
+									</button>
+								</div>
 							</div>
 						)}
 						<div>
@@ -284,45 +322,18 @@ const Primula = () => {
 								</div>
 							)}
 						</div>
-					</div>
-
-					{/* Back button with hover label */}
-					<div className="absolute group bottom-48 left-0 mb-4 mr-2">
-						<button
-							onClick={() => navigate('/home')}
-							className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
-							<BackBTN className="h-6 w-6" />
-							{/* Hover label */}
-							<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
-								Go Back
-							</span>
-						</button>
-					</div>
-
-					{/* New row button with hover label */}
-					<div className="absolute group bottom-28 left-0 mb-4 mr-2">
-						<button
-							onClick={handleAddRow}
-							className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
-							<AddBTN className="h-6 w-6" />
-							{/* Hover label */}
-							<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
-								New row
-							</span>
-						</button>
-					</div>
-
-					{/* Submit ticket button with hover label */}
-					<div className="absolute group bottom-6 left-0 mb-4 mr-2">
-						<button
-							onClick={handleSubmit}
-							className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
-							<SendBTN className="h-6 w-6" />
-							{/* Hover label */}
-							<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
-								Submit Ticket
-							</span>
-						</button>
+						{/* Back button with hover label */}
+						<div className="absolute group bottom-48 left-0 mb-4 mr-2">
+							<button
+								onClick={() => navigate('/home')}
+								className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+								<BackBTN className="h-6 w-6" />
+								{/* Hover label */}
+								<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
+									Go Back
+								</span>
+							</button>
+						</div>
 					</div>
 				</>
 			)}
