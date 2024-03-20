@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
-// Pages
+// import of pages
 import Welcome from './newPages/Welcome.jsx';
 import Home from './newPages/Home.jsx';
 import Settings from './newPages/Settings.jsx';
