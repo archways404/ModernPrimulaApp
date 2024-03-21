@@ -8,7 +8,11 @@ const path = require('path');
 /**
  * IMPORTS [EXTERNAL FUNCTIONS]
  */
-const { sFunctions, pFunctions } = require('../../functions/imports.js');
+const {
+	sFunctions,
+	pFunctions,
+	nFunctions,
+} = require('../../functions/imports.js');
 
 /**
  * [DECLARATION]
@@ -123,6 +127,20 @@ autoUpdater.on('update-error', (err) => {
 
 autoUpdater.on('update-downloaded', () => {
 	mainWindow.webContents.send('update_downloaded');
+});
+
+/**
+ * FETCH SCHEDULE
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
+ */
+ipcMain.on('start-fetchRSS-task', async (event, arg) => {
+	try {
+		const data = await nFunctions.getNews();
+		event.sender.send('fetchRSS-task-complete', data);
+	} catch (error) {
+		console.log(error);
+	}
 });
 
 /**

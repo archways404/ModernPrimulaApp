@@ -4,7 +4,7 @@ const { ipcRenderer } = window.require('electron');
 
 import Logo from '../newComponents/Home/Logo';
 import ToS from '../newComponents/Welcome/ToS';
-import CurrentVersion from '../newComponents/Home/CurrentVersion';
+import NewsFeed from '../newComponents/Home/NewsFeed';
 
 import BackBTN from '@heroicons/react/24/solid/ArrowUturnLeftIcon';
 import NewTicketBTN from '@heroicons/react/24/solid/DocumentPlusIcon';
@@ -55,26 +55,39 @@ const Home = () => {
 					<h1 className="text-xl font-bold">
 						Welcome to <span className="gradient-text">ModernPrimula</span>
 					</h1>
-					<p className="mt-2">
-						This is the summary text that gives users an insight into the
-						content of the page...
-					</p>
+					{/* Button for test of TicketResult */}
 					<button
 						onClick={() => navigate('/ticketresult')}
-						className="flex items-center text-white hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
+						className="flex items-center text-zinc-900 hover:text-green-500 font-bold p-2 ml-2 transform scale-100 hover:scale-125 transition ease-in-out duration-300">
 						<BackBTN className="h-6 w-6" />
-						{/* Hover label */}
-						<span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 p-1 text-xs text-white bg-zinc-900 rounded hidden group-hover:flex">
-							Test Ticket Result
-						</span>
 					</button>
 				</div>
 
+				{/* Additional section for general information or news */}
 				<div className="px-4 mt-4">
-					<h2 className="text-lg font-bold">RSS Feed</h2>
-					{/* You would populate this container with your RSS feed content */}
-					<div className="mt-2 bg-zinc-800 p-4 rounded-lg">
-						RSS feed content goes here...
+					<h2 className="text-lg font-bold">Latest News</h2>
+					<div className="mt-2 bg-zinc-900 p-4 rounded-lg">
+						<NewsFeed />
+					</div>
+				</div>
+
+				{/* Developer credit section */}
+				<div className="px-4 mt-4">
+					<h2 className="text-lg font-bold"></h2>
+					<div className="mt-2 bg-zinc-900 p-4 rounded-lg">
+						<p>
+							This software is created & maintained by{' '}
+							<strong>archways404</strong>,
+						</p>
+						<p className="mt-2">
+							For support and queries, contact us at{' '}
+							<a
+								href="mailto:support@modernprimula.com"
+								className="text-blue-400 hover:text-blue-600">
+								support@modernprimula.com
+							</a>
+							.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -129,22 +142,3 @@ const Home = () => {
 };
 
 export default Home;
-
-/*
-
-
-<div className="flex flex-col items-center space-y-4">
-  <button
-    onClick={() => navigate('/automatic')}
-    className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-full transition ease-in-out duration-300">
-    Create a ticket
-  </button>
-
-  <button
-    onClick={() => navigate('/settings')}
-    className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-full transition ease-in-out duration-300">
-    Settings
-  </button>
-</div>
-
-*/
