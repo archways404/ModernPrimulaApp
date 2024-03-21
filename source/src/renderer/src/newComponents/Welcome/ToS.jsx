@@ -17,7 +17,7 @@ const ToS = () => {
 				<label className="text-gray-400 text-xs">
 					By using this application you agree to our
 					<span
-						className="text-green-500 hover:text-cyan-700 cursor-pointer"
+						className="text-green-500 hover:text-green-700 cursor-pointer"
 						onClick={handleTermsClick}>
 						{' '}
 						terms and conditions

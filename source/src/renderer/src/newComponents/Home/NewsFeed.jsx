@@ -23,7 +23,7 @@ const NewsFeed = () => {
 
 	return (
 		<div className="mx-4 my-4">
-			<div className="flex justify-between gap-5">
+			<div className="flex justify-between gap-3">
 				{' '}
 				{/* Adjust the gap as needed */}
 				{articles.map((article, index) => (
@@ -52,7 +52,7 @@ const NewsFeed = () => {
 							href={article.link[0]}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-blue-500 hover:text-blue-700 transition-colors duration-200 text-sm" // Styling for a text link
+							className="text-green-500 hover:text-green-700 transition-colors duration-200 text-sm" // Styling for a text link
 						>
 							Read more
 						</a>

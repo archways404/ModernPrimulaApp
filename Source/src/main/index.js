@@ -130,7 +130,16 @@ autoUpdater.on('update-downloaded', () => {
 });
 
 /**
- * FETCH SCHEDULE
+ * OPEN LINK IN BROWSER
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
+ */
+ipcMain.on('open-in-browser', (event, url) => {
+	shell.openExternal(url);
+});
+
+/**
+ * FETCH RSS
  *
  * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
  */
