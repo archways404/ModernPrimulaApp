@@ -6,9 +6,6 @@ import { useEffect, useState } from 'react';
 const LatestV = () => {
 	const [appVersion, setAppVersion] = useState('');
 
-	{
-		/* Fetch latest version */
-	}
 	useEffect(() => {
 		const fetchVersion = async () => {
 			const version = __APP_VERSION__;
@@ -20,7 +17,13 @@ const LatestV = () => {
 
 	return (
 		<>
-			<p className="rgbEffect font-semibold text-xl">Current v{appVersion}</p>
+			<p className="text-white font-semibold text-xl">
+				latest version
+				<span className="text-green-500 font-semibold text-xl">
+					{' '}
+					v{appVersion}
+				</span>
+			</p>
 		</>
 	);
 };

@@ -26,20 +26,13 @@ const {
 } = require('./primula/handleAction.js');
 const { selectHourlyWage } = require('./primula/selectWage.js');
 
-// DB MODULES
-const sendError = require('./database/error.js');
-const sendInfo = require('./database/info.js');
+// NEWS MODULES
+const { getNews } = require('./rss/news.js');
 
 // SCHEDULE FUNCTIONS
 const sFunctions = {
 	createURL,
 	getSchedule,
-};
-
-// DATABASE FUNCTIONS
-const dbFunctions = {
-  sendError,
-  sendInfo,
 };
 
 // PRIMULA FUNCTIONS
@@ -67,8 +60,13 @@ const pFunctions = {
 	closeBrowser,
 };
 
+// NEWS FUNCTIONS
+const nFunctions = {
+  getNews,
+};
+
 module.exports = {
 	sFunctions,
 	pFunctions,
-	dbFunctions,
+	nFunctions,
 };

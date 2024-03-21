@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import Logo from '../components/Logo';
 import CurrentVersion from '../components/CurrentVersion';
@@ -10,21 +8,11 @@ import ToS from '../components/ToS';
 
 const Welcome = () => {
 	let navigate = useNavigate();
+
 	return (
 		<>
 			<div className="flex flex-col justify-between items-center min-h-screen bg-zinc-900 text-gray-300 text-center px-4 w-full">
-				<ToastContainer
-					position="top-right"
-					autoClose={5000}
-					hideProgressBar={false}
-					newestOnTop={false}
-					closeOnClick
-					rtl={false}
-					pauseOnFocusLoss
-					draggable
-					pauseOnHover
-				/>
-				<div className="space-y-8 mt-20">
+				<div className="space-y-8 mt-40">
 					<Logo />
 					<CurrentVersion />
 					<button
