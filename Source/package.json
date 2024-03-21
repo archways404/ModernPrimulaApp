@@ -1,10 +1,10 @@
 {
 	"name": "modernprimula",
 	"version": "1.1.0",
-	"description": "404 Company Not Found LLC",
+	"description": "software404 LLC",
 	"main": "./out/main/index.js",
 	"author": "archways404",
-	"homepage": "https://archways404.dev",
+	"homepage": "https://software404.org",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/archways404/ModernPrimulaApp.git"
