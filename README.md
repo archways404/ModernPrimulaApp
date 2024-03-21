@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/archways404/ModernPrimulaApp/blob/main/images/image_transparent_all-removebg-preview.png)
+![Logo](https://github.com/archways404/ModernPrimulaApp/blob/main/images/NewLogo.png)
 
 <p align="center">
 <a href="https://github.com/archways404/ModernPrimulaApp/releases/latest">
@@ -62,9 +62,9 @@ I plan on adding features & more which will be listed here and you can check the
 
 ## Screenshots
 
-![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/Homepage.png)
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/SCR-Welcome.png)
 
-![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/MainMenu.png)
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/SCR-Home.png)
 
-![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/Dates.png)
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/SCR-NewTicket.png)
 
