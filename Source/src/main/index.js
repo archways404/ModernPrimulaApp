@@ -41,7 +41,7 @@ function createWindow() {
 			preload: join(__dirname, '../preload/index.js'),
 			sandbox: false,
 			nodeIntegration: true,
-			contextIsolation: false, // Note: Turning off context isolation is a security risk
+			contextIsolation: false,
 		},
 	});
 
@@ -59,8 +59,8 @@ function createWindow() {
 		return { action: 'deny' };
 	});
 
-	// DISABLED FOR TESTING
-	mainWindow.webContents.openDevTools();
+	// DISABLED FOR PRODUCTION
+	//mainWindow.webContents.openDevTools();
 
 	mainWindow.webContents.on('did-finish-load', () => {
 		mainWindow.webContents.send('set-dirname', __dirname);

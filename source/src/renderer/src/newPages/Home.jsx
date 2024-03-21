@@ -80,8 +80,8 @@ const Home = () => {
 				</p>
 				<div className="flex items-center justify-center mt-4 gap-4">
 					<a
-						href="mailto:support@modernprimula.com"
-						className="text-blue-400 hover:text-blue-600">
+						href="mailto:archways@gmx.us"
+						className="text-green-500 hover:text-green-700">
 						<img
 							className="w-7 h-7"
 							src={mail}></img>
@@ -91,7 +91,7 @@ const Home = () => {
 							e.preventDefault();
 							openInBrowser('https://github.com/archways404');
 						}}
-						className="text-blue-400 hover:text-blue-600 cursor-pointer">
+						className="text-green-500 hover:text-green-700 cursor-pointer">
 						<img
 							className="w-6 h-6"
 							src={github}
