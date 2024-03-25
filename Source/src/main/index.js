@@ -3,11 +3,7 @@ import { app, shell, BrowserWindow, ipcMain, nativeImage } from 'electron';
 import { join } from 'path';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 const { autoUpdater } = require('electron-updater');
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const dotenv = require('dotenv');
 const path = require('path');
-
-dotenv.config({ path: '../../.env' });
 
 /**
  * IMPORTS [EXTERNAL FUNCTIONS]
@@ -15,23 +11,14 @@ dotenv.config({ path: '../../.env' });
 const {
 	sFunctions,
 	pFunctions,
-	dbFunctions,
+	nFunctions,
 } = require('../../functions/imports.js');
-
-/**
- * [DB CONFIGURATION]
- */
-const db_user = encodeURIComponent(process.env.DB_USERNAME);
-const db_pass = encodeURIComponent(process.env.DB_PASSWORD);
-const db_cluster = process.env.DB_CLUSTER;
-const db_args = process.env.DB_ARGS;
 
 /**
  * [DECLARATION]
  */
 let mainWindow;
 let globalPageContext = null;
-let shareData;
 autoUpdater.autoDownload = false;
 
 /**
@@ -54,7 +41,7 @@ function createWindow() {
 			preload: join(__dirname, '../preload/index.js'),
 			sandbox: false,
 			nodeIntegration: true,
-			contextIsolation: false, // Note: Turning off context isolation is a security risk
+			contextIsolation: false,
 		},
 	});
 
@@ -72,7 +59,7 @@ function createWindow() {
 		return { action: 'deny' };
 	});
 
-	// DISABLED FOR TESTING
+	// DISABLED FOR PRODUCTION
 	//mainWindow.webContents.openDevTools();
 
 	mainWindow.webContents.on('did-finish-load', () => {
@@ -143,6 +130,29 @@ autoUpdater.on('update-downloaded', () => {
 });
 
 /**
+ * OPEN LINK IN BROWSER
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
+ */
+ipcMain.on('open-in-browser', (event, url) => {
+	shell.openExternal(url);
+});
+
+/**
+ * FETCH RSS
+ *
+ * TODO: CHANGE 'start-fetchSchedule-task' to something more descriptive
+ */
+ipcMain.on('start-fetchRSS-task', async (event, arg) => {
+	try {
+		const data = await nFunctions.getNews();
+		event.sender.send('fetchRSS-task-complete', data);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+/**
  * VERIFY LOGIN DETAILS
  */
 ipcMain.on('start-verifyLoginDetails', async (event, arg) => {
@@ -155,16 +165,6 @@ ipcMain.on('start-verifyLoginDetails', async (event, arg) => {
 		console.log(loginStatus);
 		if (loginStatus === 200) {
 			console.log('Login successful');
-			await dbFunctions.sendInfo(
-				arg.username,
-				'login',
-				new Date(),
-				'1.0.0',
-				db_user,
-				db_pass,
-				db_cluster,
-				db_args
-			);
 			event.sender.send('verifyLoginDetails-complete', {
 				status: 'success',
 				username: arg.username,
@@ -172,19 +172,6 @@ ipcMain.on('start-verifyLoginDetails', async (event, arg) => {
 			});
 		} else {
 			console.log('Login failed');
-			await dbFunctions.sendError(
-				arg.username,
-				'login',
-				new Date(),
-				'1.0.0',
-				'Invalid login details',
-				'172',
-				'start-verifyLoginDetails',
-				db_user,
-				db_pass,
-				db_cluster,
-				db_args
-			);
 			event.sender.send('verifyLoginDetails-complete', {
 				status: 'failed',
 				username: arg.username,
@@ -193,19 +180,6 @@ ipcMain.on('start-verifyLoginDetails', async (event, arg) => {
 		}
 	} catch (error) {
 		console.log(error);
-		await dbFunctions.sendError(
-			arg.username,
-			'login',
-			new Date(),
-			'1.0.0',
-			error,
-			'192',
-			'start-verifyLoginDetails',
-			db_user,
-			db_pass,
-			db_cluster,
-			db_args
-		);
 		event.sender.send('verifyLoginDetails-complete', { status: error });
 	}
 });
@@ -311,16 +285,26 @@ ipcMain.on('EMP_data', async (event, clientData) => {
 	try {
 		const logicData = await pFunctions.getSummary(newPage);
 		const tableData = logicData.tableData;
+		const summary = logicData.summaryData;
+		const totalBelopp = logicData.totalBelopp;
+		const afterTax = logicData.afterTax;
 		const verifyInputData = logicData.verifyInputData;
 		const advancedtableData = logicData.advancedtableData;
 		const validFormDataTEST = await pFunctions.verifyData(
 			data,
 			advancedtableData
 		);
-		console.log('validFormDataTEST: ', validFormDataTEST);
+		const res = {
+			summary: summary,
+			totalBelopp: totalBelopp,
+			afterTax: afterTax,
+		};
+
+		console.log('tableData', tableData);
+		//console.log('validFormDataTEST: ', validFormDataTEST);
 		if (validFormDataTEST) {
 			console.log('success');
-			mainWindow.webContents.send('Results', tableData);
+			mainWindow.webContents.send('Results', res);
 		}
 	} catch (error) {
 		console.log(error);

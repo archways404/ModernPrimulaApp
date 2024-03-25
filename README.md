@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/archways404/ModernPrimulaApp/blob/main/images/image_transparent_all-removebg-preview.png)
+![Logo](https://github.com/archways404/ModernPrimulaApp/blob/DEV_v1.1.0_UI/images/NewLogo.png)
 
 <p align="center">
 <a href="https://github.com/archways404/ModernPrimulaApp/releases/latest">
@@ -14,13 +14,17 @@
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/archways404/ModernPrimulaApp">
 </p>
 
-## Instructions & Documentation
-
-[![macOS Instructions](https://img.shields.io/badge/-macOS%20Instructions-red?style=for-the-badge)](https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md#macos-installation)
-
-[![Windows Instructions](https://img.shields.io/badge/-Windows%20Instructions-blue?style=for-the-badge)](https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md#windows-installation)
-
-[![Documentation & Instructions](https://img.shields.io/badge/-Documentation%20&%20Instructions-green?style=for-the-badge)](https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md)
+<p align="center">
+  <a href="https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md#macos-installation">
+    <img alt="MacOS Instructions" src="https://img.shields.io/badge/-macOS%20Instructions-red?style=for-the-badge">
+  </a>
+  <a href="https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md">
+    <img alt="Documentation" src="https://img.shields.io/badge/-Documentation%20&%20Instructions-green?style=for-the-badge">
+  </a>
+  <a href="https://github.com/archways404/ModernPrimulaApp/blob/main/extras/documentation.md#windows-installation">
+    <img alt="Windows Instructions" src="https://img.shields.io/badge/-Windows%20Instructions-blue?style=for-the-badge">
+  </a>
+</p>
 
 ## Features
 
@@ -62,9 +66,9 @@ I plan on adding features & more which will be listed here and you can check the
 
 ## Screenshots
 
-![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/Homepage.png)
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/DEV_v1.1.0_UI/images/SCR-Welcome.png)
 
-![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/MainMenu.png)
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/DEV_v1.1.0_UI/images/SCR-Home.png)
 
-![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/main/images/Dates.png)
+![App Screenshot](https://github.com/archways404/ModernPrimulaApp/blob/DEV_v1.1.0_UI/images/SCR-NewTicket.png)
 

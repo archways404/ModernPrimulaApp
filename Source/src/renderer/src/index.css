@@ -3,6 +3,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text {
+  background: linear-gradient(to right, green, cyan, green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  animation: moveGradient 20s linear infinite;
+}
+
+
 @keyframes rgbTextEffect {
   0% { color: #ff0000; } /* Red */
   33% { color: #00ff00; } /* Green */

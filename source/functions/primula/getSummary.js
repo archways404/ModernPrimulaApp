@@ -59,16 +59,74 @@ async function getSummary(newPage) {
 				Belopp: await cells[6].evaluate((cell) => cell.textContent.trim()),
 			};
 			// Push the rowData object into the tableData array
+			// tabelData is the data that is being used to display the results
 			tableData.push(rowData);
 			verifyInputData.push(verifyrowData);
 			advancedtableData.push(advancedrowData);
 		}
+		let combinedResults = {};
+
+		tableData.forEach((entry) => {
+			let date = entry.From;
+			let amount = parseFloat(
+				entry.Belopp.replace(/\s/g, '').replace(',', '.')
+			);
+
+			if (!combinedResults[date]) {
+				combinedResults[date] = {
+					Löneart: 'Timlön',
+					From: date,
+					Antal: entry.Antal,
+					Belopp: 0,
+				};
+			}
+
+			combinedResults[date].Belopp += amount;
+		});
+
+		let finalResults = Object.values(combinedResults).map((entry) => {
+			return {
+				...entry,
+				Belopp: entry.Belopp.toLocaleString('sv-SE', {
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				}),
+			};
+		});
+
+		console.log(finalResults);
+
+		let totalBelopp = finalResults.reduce((total, entry) => {
+			return (
+				total + parseFloat(entry.Belopp.replace(',', '.').replace(/\s/g, ''))
+			);
+		}, 0);
+
+		// Format the total to match the original string format, if necessary
+		let formattedTotalBelopp = totalBelopp.toLocaleString('sv-SE', {
+			minimumFractionDigits: 2,
+			maximumFractionDigits: 2,
+		});
+
+		console.log(formattedTotalBelopp);
+
+		let afterTax = totalBelopp * 0.7;
+		let formattedAfterTax = afterTax.toLocaleString('sv-SE', {
+			minimumFractionDigits: 2,
+			maximumFractionDigits: 2,
+		});
+
+		console.log(formattedAfterTax);
+
 		// Output the table data
 		console.log('tableData: ', tableData);
 		console.log('verifyInputData: ', verifyInputData);
 		console.log('advancedtableData: ', advancedtableData);
 		const returndata = {
 			tableData: tableData,
+			summaryData: finalResults,
+			totalBelopp: totalBelopp,
+			afterTax: afterTax,
 			verifyInputData: verifyInputData,
 			advancedtableData: advancedtableData,
 		};
