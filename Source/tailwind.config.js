@@ -2,7 +2,12 @@
 module.exports = {
 	content: ['./index.html', './src/**/*.{jsx,js}'],
 	theme: {
-		extend: {},
+	  extend: {
+		colors: {
+		  SpaceCherry: '#990011',
+		},
+	  },
 	},
 	plugins: [require('tailwind-scrollbar-hide')],
-};
+  };
+  
